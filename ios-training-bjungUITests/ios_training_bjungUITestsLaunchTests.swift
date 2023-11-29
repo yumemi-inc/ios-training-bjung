@@ -2,7 +2,7 @@
 //  ios_training_bjungUITestsLaunchTests.swift
 //  ios-training-bjungUITests
 //
-//  Created by 鄭 普勤 on 2023/11/28.
+//  Created by 鄭 普勤 on 2023/11/29.
 //
 
 import XCTest
