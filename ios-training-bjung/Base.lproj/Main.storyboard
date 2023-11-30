@@ -18,25 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="infoDisplayStackView" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="1cS-6y-Tof">
+                            <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="infoDisplayStackView" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="1cS-6y-Tof" userLabel="infoDisplayStackView">
                                 <rect key="frame" x="98.333333333333329" y="317.66666666666669" width="196.33333333333337" height="216.66666666666669"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="lr7-Ih-hWs">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="lr7-Ih-hWs" userLabel="imageView">
                                         <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="196.33333333333334"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lr7-Ih-hWs" secondAttribute="height" multiplier="1:1" id="9gJ-9Q-zRL"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="labelDisplayStackView" translatesAutoresizingMaskIntoConstraints="NO" id="9F7-rT-jtE">
+                                    <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="labelDisplayStackView" translatesAutoresizingMaskIntoConstraints="NO" id="9F7-rT-jtE" userLabel="labelDisplayStackView">
                                         <rect key="frame" x="0.0" y="196.33333333333331" width="196.33333333333334" height="20.333333333333343"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" restorationIdentifier="blueUiLabel" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve6-h5-bvJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" restorationIdentifier="blueUiLabel" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve6-h5-bvJ" userLabel="blueUiLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="Blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="redUiLabel" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-yq-mFq">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="redUiLabel" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-yq-mFq" userLabel="redUiLabel">
                                                 <rect key="frame" x="98.333333333333314" y="0.0" width="98" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="Red"/>
@@ -54,12 +54,12 @@
                                     <constraint firstItem="9F7-rT-jtE" firstAttribute="top" secondItem="lr7-Ih-hWs" secondAttribute="bottom" id="wqD-8R-1rZ"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="closeButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fz-YF-PQn">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="closeUiButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fz-YF-PQn" userLabel="closeUiButton">
                                 <rect key="frame" x="98.333333333333343" y="614.33333333333337" width="98.333333333333343" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="reloadUiButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bp-Ng-ySF">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="reloadUiButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bp-Ng-ySF" userLabel="reloadUiButton">
                                 <rect key="frame" x="196.66666666666666" y="614.33333333333337" width="97.999999999999972" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
