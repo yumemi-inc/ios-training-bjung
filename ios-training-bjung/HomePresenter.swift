@@ -7,6 +7,7 @@
 
 import Foundation
 import YumemiWeather
+import UIKit
 
 protocol HomePresenterInput {
     @MainActor
@@ -14,7 +15,7 @@ protocol HomePresenterInput {
 }
 
 protocol HomePresenterOutput: AnyObject {
-    func updateInfoDisplay(imageResId: String)
+    func updateInfoDisplay(imageResId: String, color: UIColor)
 }
 
 final class HomePresenter: HomePresenterInput {
@@ -31,25 +32,33 @@ final class HomePresenter: HomePresenterInput {
         Task {
             do {
                 let result = try await model.fetchWeatherData()
-                let imageResId = getImageResId(response: result)
-                
-                view.updateInfoDisplay(imageResId: imageResId)
+                let resource = getDisplayResource(response: result)
+
+                view.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
             } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    private func getImageResId(response: String) -> String {
+    private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {
         let imageResId: String
+        let color: UIColor
         
         switch response {
-        case "sunny": imageResId = "ic_sunny"
-        case "rainy": imageResId = "ic_rainy"
-        case "cloudy": imageResId = "ic_cloudy"
-        default: fatalError("unknown result")
+        case "sunny": 
+            imageResId = "ic_sunny"
+            color = .red
+        case "rainy":
+            imageResId = "ic_rainy"
+            color = .systemBlue
+        case "cloudy":
+            imageResId = "ic_cloudy"
+            color = .gray
+        default:
+            fatalError("unknown result")
         }
         
-        return imageResId
+        return (imageResId, color)
     }
 }

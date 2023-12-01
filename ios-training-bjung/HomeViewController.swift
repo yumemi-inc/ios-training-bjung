@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomePresenterOutput {
     
-    func updateInfoDisplay(imageResId: String) {
-        imageView.image = UIImage(imageLiteralResourceName: imageResId)
+    func updateInfoDisplay(imageResId: String, color: UIColor) {
+        imageView.image = UIImage(imageLiteralResourceName: imageResId).withTintColor(color)
     }
 }
 
