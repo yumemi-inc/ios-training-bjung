@@ -9,11 +9,12 @@ import Foundation
 import YumemiWeather
 
 protocol HomePresenterInput {
+    @MainActor
     func loadWeatherData()
 }
 
 protocol HomePresenterOutput: AnyObject {
-    func updateInfoDisplay(result: String)
+    func updateInfoDisplay(imageResId: String)
 }
 
 final class HomePresenter: HomePresenterInput {
@@ -25,14 +26,30 @@ final class HomePresenter: HomePresenterInput {
         self.model = model
     }
     
+    @MainActor
     func loadWeatherData() {
         Task {
             do {
                 let result = try await model.fetchWeatherData()
-                print(result)
+                let imageResId = getImageResId(response: result)
+                
+                view.updateInfoDisplay(imageResId: imageResId)
             } catch {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func getImageResId(response: String) -> String {
+        let imageResId: String
+        
+        switch response {
+        case "sunny": imageResId = "ic_sunny"
+        case "rainy": imageResId = "ic_rainy"
+        case "cloudy": imageResId = "ic_cloudy"
+        default: fatalError("unknown result")
+        }
+        
+        return imageResId
     }
 }

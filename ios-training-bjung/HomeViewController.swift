@@ -10,6 +10,8 @@ import YumemiWeather
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     private var presenter: HomePresenterInput!
 
     override func viewDidLoad() {
@@ -26,8 +28,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomePresenterOutput {
     
-    func updateInfoDisplay(result: String) {
-        // update ui
+    func updateInfoDisplay(imageResId: String) {
+        imageView.image = UIImage(imageLiteralResourceName: imageResId)
     }
 }
 
