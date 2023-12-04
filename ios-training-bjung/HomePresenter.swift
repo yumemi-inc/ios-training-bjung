@@ -22,9 +22,12 @@ final class HomePresenter: HomePresenterInput {
     private weak var view: HomePresenterOutput!
     private var model: WeatherModelInput
     
-    init(view: HomePresenterOutput, model: WeatherModelInput) {
-        self.view = view
+    init(model: WeatherModelInput) {
         self.model = model
+    }
+    
+    func inject(view: HomePresenterOutput) {
+        self.view = view
     }
     
     @MainActor

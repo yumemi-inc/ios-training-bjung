@@ -13,12 +13,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     private var presenter: HomePresenterInput!
+    
+    init?(coder: NSCoder, presenter: HomePresenterInput) {
+        self.presenter = presenter
+        super.init(coder: coder)
+    }
+    
+    // 独自 init を作ったので必要になる
+    required init?(coder: NSCoder) {
+            fatalError()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let model = WeatherModel(yumemiWeather: YumemiWeather.self)
-        self.presenter = HomePresenter(view: self, model: model)
     }
 
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
