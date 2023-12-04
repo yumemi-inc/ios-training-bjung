@@ -29,6 +29,8 @@ final class HomePresenter: HomePresenterInput {
     
     @MainActor
     func loadWeatherData() {
+        // 非同期処理が行われることはないが、
+        // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
                 let result = try await model.fetchWeatherData()
