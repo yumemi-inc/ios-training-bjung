@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    private var presenter: HomePresenterInput!
+    private var presenter: HomePresenterInput
     
     init?(coder: NSCoder, presenter: HomePresenterInput) {
         self.presenter = presenter
