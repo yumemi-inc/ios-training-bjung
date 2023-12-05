@@ -19,7 +19,7 @@ protocol HomePresenterOutput: AnyObject {
 }
 
 final class HomePresenter: HomePresenterInput {
-    private weak var view: HomePresenterOutput!
+    private weak var view: HomePresenterOutput?
     private var model: WeatherModelInput
     
     init(model: WeatherModelInput) {
@@ -39,7 +39,7 @@ final class HomePresenter: HomePresenterInput {
                 let result = try await model.fetchWeatherData()
                 let resource = getDisplayResource(response: result)
 
-                view.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
+                view?.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
             } catch {
                 print(error.localizedDescription)
             }
