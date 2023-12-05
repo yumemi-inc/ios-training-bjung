@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
         let model = WeatherModel(yumemiWeather: YumemiWeather.self)
         let presenter = HomePresenter(model: model)

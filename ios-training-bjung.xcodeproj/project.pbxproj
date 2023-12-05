@@ -10,13 +10,14 @@
 		10B89C512B16C3DB001C0E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C502B16C3DB001C0E96 /* AppDelegate.swift */; };
 		10B89C532B16C3DB001C0E96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */; };
 		10B89C552B16C3DB001C0E96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C542B16C3DB001C0E96 /* HomeViewController.swift */; };
-		10B89C582B16C3DB001C0E96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C562B16C3DB001C0E96 /* Main.storyboard */; };
+		10B89C582B16C3DB001C0E96 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C562B16C3DB001C0E96 /* HomeView.storyboard */; };
 		10B89C5A2B16C3DC001C0E96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C592B16C3DC001C0E96 /* Assets.xcassets */; };
 		10B89C5D2B16C3DC001C0E96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */; };
 		10B89C682B16C3DC001C0E96 /* ios_training_bjungTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C672B16C3DC001C0E96 /* ios_training_bjungTests.swift */; };
 		10B89C722B16C3DC001C0E96 /* ios_training_bjungUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C712B16C3DC001C0E96 /* ios_training_bjungUITests.swift */; };
 		10B89C742B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C732B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift */; };
 		10B89C822B16C807001C0E96 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 10B89C812B16C807001C0E96 /* YumemiWeather */; };
+		10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D758C22B1EC5D1002E4EB6 /* Router.swift */; };
 		10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D91C642B19B9ED00BAE764 /* WeatherModel.swift */; };
 		10E1140E2B19A90A00117A7D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1140D2B19A90A00117A7D /* HomePresenter.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +44,7 @@
 		10B89C502B16C3DB001C0E96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		10B89C542B16C3DB001C0E96 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		10B89C572B16C3DB001C0E96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10B89C572B16C3DB001C0E96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeView.storyboard; sourceTree = "<group>"; };
 		10B89C592B16C3DC001C0E96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10B89C5C2B16C3DC001C0E96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10B89C5E2B16C3DC001C0E96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		10B89C6D2B16C3DC001C0E96 /* ios-training-bjungUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-training-bjungUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B89C712B16C3DC001C0E96 /* ios_training_bjungUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungUITests.swift; sourceTree = "<group>"; };
 		10B89C732B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		10D758C22B1EC5D1002E4EB6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		10D91C642B19B9ED00BAE764 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		10E1140D2B19A90A00117A7D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,12 +110,13 @@
 				10B89C502B16C3DB001C0E96 /* AppDelegate.swift */,
 				10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */,
 				10B89C542B16C3DB001C0E96 /* HomeViewController.swift */,
-				10B89C562B16C3DB001C0E96 /* Main.storyboard */,
+				10B89C562B16C3DB001C0E96 /* HomeView.storyboard */,
 				10B89C592B16C3DC001C0E96 /* Assets.xcassets */,
 				10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */,
 				10B89C5E2B16C3DC001C0E96 /* Info.plist */,
 				10E1140D2B19A90A00117A7D /* HomePresenter.swift */,
 				10D91C642B19B9ED00BAE764 /* WeatherModel.swift */,
+				10D758C22B1EC5D1002E4EB6 /* Router.swift */,
 			);
 			path = "ios-training-bjung";
 			sourceTree = "<group>";
@@ -247,7 +250,7 @@
 			files = (
 				10B89C5D2B16C3DC001C0E96 /* LaunchScreen.storyboard in Resources */,
 				10B89C5A2B16C3DC001C0E96 /* Assets.xcassets in Resources */,
-				10B89C582B16C3DB001C0E96 /* Main.storyboard in Resources */,
+				10B89C582B16C3DB001C0E96 /* HomeView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +279,7 @@
 				10B89C512B16C3DB001C0E96 /* AppDelegate.swift in Sources */,
 				10B89C532B16C3DB001C0E96 /* SceneDelegate.swift in Sources */,
 				10E1140E2B19A90A00117A7D /* HomePresenter.swift in Sources */,
+				10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */,
 				10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,12 +317,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		10B89C562B16C3DB001C0E96 /* Main.storyboard */ = {
+		10B89C562B16C3DB001C0E96 /* HomeView.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				10B89C572B16C3DB001C0E96 /* Base */,
 			);
-			name = Main.storyboard;
+			name = HomeView.storyboard;
 			sourceTree = "<group>";
 		};
 		10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */ = {
@@ -459,7 +463,6 @@
 				INFOPLIST_FILE = "ios-training-bjung/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -486,7 +489,6 @@
 				INFOPLIST_FILE = "ios-training-bjung/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
