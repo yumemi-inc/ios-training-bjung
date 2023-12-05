@@ -29,6 +29,10 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func onCloseButtonClick(_ sender: Any) {
+        Router.shared.dissmiss(target: self)
+    }
+    
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
         presenter.loadWeatherData()
     }

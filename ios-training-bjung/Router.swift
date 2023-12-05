@@ -37,6 +37,10 @@ final class Router {
         
         show(from: from, to: viewController)
     }
+    
+    func dissmiss(target: UIViewController) {
+        target.dismiss(animated: true)
+    }
 
     private func show(from: UIViewController, to: UIViewController, completion:(() -> Void)? = nil) {
         from.present(to, animated: true)
