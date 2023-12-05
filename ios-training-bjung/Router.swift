@@ -12,8 +12,18 @@ final class Router {
     static let shared = Router()
     private init() {}
     
-    func showHomeView(windowScene: UIWindowScene) -> UIWindow {
+    func showFirstView(windowScene: UIWindowScene) -> UIWindow {
         let window = UIWindow(windowScene: windowScene)
+        let storyboard = UIStoryboard(name: "FirstView", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()
+        
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
+        
+        return window
+    }
+    
+    func showHomeView(from: UIViewController) {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
         let model = WeatherModel(yumemiWeather: YumemiWeather.self)
@@ -21,11 +31,14 @@ final class Router {
         let viewController = storyboard.instantiateInitialViewController() { coder in
             HomeViewController(coder: coder, presenter: presenter)
         }!
+        viewController.modalPresentationStyle = .fullScreen
         
         presenter.inject(view: viewController)
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
         
-        return window
+        show(from: from, to: viewController)
+    }
+
+    private func show(from: UIViewController, to: UIViewController, completion:(() -> Void)? = nil) {
+        from.present(to, animated: true)
     }
 }

@@ -14,4 +14,8 @@ class FirstViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Router.shared.showHomeView(from: self)
+    }
 }
