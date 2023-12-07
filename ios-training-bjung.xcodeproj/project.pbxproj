@@ -88,6 +88,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1070B7752B21532100F8C77D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10B89C542B16C3DB001C0E96 /* HomeViewController.swift */,
+				10D758C62B1EDA8B002E4EB6 /* FirstViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1070B7762B21532F00F8C77D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10D91C642B19B9ED00BAE764 /* WeatherModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1070B7772B21533500F8C77D /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				10E1140D2B19A90A00117A7D /* HomePresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		1070B77A2B2153C600F8C77D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */,
+				10D758C42B1EDA55002E4EB6 /* FirstView.storyboard */,
+				10B89C562B16C3DB001C0E96 /* HomeView.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		10B89C442B16C3DB001C0E96 = {
 			isa = PBXGroup;
 			children = (
@@ -111,18 +146,15 @@
 		10B89C4F2B16C3DB001C0E96 /* ios-training-bjung */ = {
 			isa = PBXGroup;
 			children = (
+				1070B77A2B2153C600F8C77D /* Storyboards */,
+				1070B7772B21533500F8C77D /* Presenters */,
+				1070B7762B21532F00F8C77D /* Models */,
+				1070B7752B21532100F8C77D /* Views */,
 				10B89C502B16C3DB001C0E96 /* AppDelegate.swift */,
 				10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */,
-				10B89C542B16C3DB001C0E96 /* HomeViewController.swift */,
-				10B89C562B16C3DB001C0E96 /* HomeView.storyboard */,
 				10B89C592B16C3DC001C0E96 /* Assets.xcassets */,
-				10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */,
 				10B89C5E2B16C3DC001C0E96 /* Info.plist */,
-				10E1140D2B19A90A00117A7D /* HomePresenter.swift */,
-				10D91C642B19B9ED00BAE764 /* WeatherModel.swift */,
 				10D758C22B1EC5D1002E4EB6 /* Router.swift */,
-				10D758C42B1EDA55002E4EB6 /* FirstView.storyboard */,
-				10D758C62B1EDA8B002E4EB6 /* FirstViewController.swift */,
 			);
 			path = "ios-training-bjung";
 			sourceTree = "<group>";
