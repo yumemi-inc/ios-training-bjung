@@ -8,7 +8,7 @@
 import UIKit
 import YumemiWeather
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
