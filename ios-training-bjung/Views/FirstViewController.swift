@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os
 
 final class FirstViewController: UIViewController {
 
@@ -13,6 +14,10 @@ final class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    deinit {
+        Logger().debug("FirstViewController deinit")
     }
     
     override func viewDidAppear(_ animated: Bool) {

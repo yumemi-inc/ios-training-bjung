@@ -7,6 +7,7 @@
 
 import UIKit
 import YumemiWeather
+import os
 
 final class HomeViewController: UIViewController {
     
@@ -22,6 +23,10 @@ final class HomeViewController: UIViewController {
     // 独自 init を作ったので必要になる
     required init?(coder: NSCoder) {
             fatalError()
+    }
+    
+    deinit {
+        Logger().debug("HomeViewController deinit")
     }
 
     override func viewDidLoad() {
