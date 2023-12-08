@@ -39,7 +39,7 @@ final class HomePresenter: HomePresenterInput {
                 // view が nil の場合、 api を実行せず処理を終了
                 guard let view else { return }
                 
-                let result = try await model.fetchWeatherData()
+                let result = try await model.fetchWeatherData(location: "tokyo")
                 let resource = getDisplayResource(response: result)
 
                 view.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
