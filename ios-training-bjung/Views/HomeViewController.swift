@@ -12,6 +12,7 @@ import os
 final class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     private var presenter: HomePresenterInput
     
@@ -47,6 +48,12 @@ extension HomeViewController: HomePresenterOutput {
     
     func updateInfoDisplay(imageResId: String, color: UIColor) {
         imageView.image = UIImage(imageLiteralResourceName: imageResId).withTintColor(color)
+        errorLabel.isHidden = true
+    }
+    
+    func showErrorMessage() {
+        errorLabel.isHidden = false
+        errorLabel.text = "エラーが発生しました"
     }
 }
 

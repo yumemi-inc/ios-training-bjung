@@ -70,7 +70,7 @@
                                     <action selector="onReloadButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3m2-NM-Wvk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="errorLabel" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uej-Ol-ATu" userLabel="errorLabel">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="errorLabel" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uej-Ol-ATu" userLabel="errorLabel">
                                 <rect key="frame" x="98.333333333333329" y="574.33333333333337" width="196.33333333333337" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="Red"/>
@@ -97,6 +97,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="uej-Ol-ATu" id="d6s-LG-yA6"/>
                         <outlet property="imageView" destination="lr7-Ih-hWs" id="kGL-na-JKk"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,7 @@ protocol HomePresenterInput {
 
 protocol HomePresenterOutput: AnyObject {
     func updateInfoDisplay(imageResId: String, color: UIColor)
+    func showErrorMessage()
 }
 
 final class HomePresenter: HomePresenterInput {
@@ -44,6 +45,7 @@ final class HomePresenter: HomePresenterInput {
 
                 view.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
             } catch {
+                view?.showErrorMessage()
                 print(error.localizedDescription)
             }
         }
