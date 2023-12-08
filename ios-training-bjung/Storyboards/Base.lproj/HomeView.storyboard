@@ -70,16 +70,25 @@
                                     <action selector="onReloadButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3m2-NM-Wvk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="errorLabel" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uej-Ol-ATu" userLabel="errorLabel">
+                                <rect key="frame" x="98.333333333333329" y="574.33333333333337" width="196.33333333333337" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Red"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="uej-Ol-ATu" firstAttribute="trailing" secondItem="1cS-6y-Tof" secondAttribute="trailing" id="4ey-i3-enZ"/>
+                            <constraint firstItem="uej-Ol-ATu" firstAttribute="leading" secondItem="1cS-6y-Tof" secondAttribute="leading" id="7pm-XB-J6H"/>
                             <constraint firstItem="1cS-6y-Tof" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DjH-Ac-f0L"/>
                             <constraint firstItem="lr7-Ih-hWs" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="G1c-jM-cO3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7fz-YF-PQn" secondAttribute="trailing" symbolic="YES" id="Rzw-w6-Ous"/>
                             <constraint firstItem="7fz-YF-PQn" firstAttribute="top" secondItem="1cS-6y-Tof" secondAttribute="bottom" constant="80" id="Tyo-U4-nUF"/>
                             <constraint firstItem="3Bp-Ng-ySF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="VGp-G0-OEi"/>
                             <constraint firstItem="7fz-YF-PQn" firstAttribute="width" secondItem="1cS-6y-Tof" secondAttribute="width" multiplier="0.5" id="fWh-os-BMw"/>
+                            <constraint firstItem="uej-Ol-ATu" firstAttribute="top" secondItem="1cS-6y-Tof" secondAttribute="bottom" constant="40" id="hcp-Rx-dpH"/>
                             <constraint firstItem="7fz-YF-PQn" firstAttribute="leading" secondItem="1cS-6y-Tof" secondAttribute="leading" id="kNe-rO-oz9"/>
                             <constraint firstItem="3Bp-Ng-ySF" firstAttribute="top" secondItem="1cS-6y-Tof" secondAttribute="bottom" constant="80" id="khn-Pz-yPx"/>
                             <constraint firstItem="3Bp-Ng-ySF" firstAttribute="width" secondItem="1cS-6y-Tof" secondAttribute="width" multiplier="0.5" id="oQm-2D-p2v"/>
