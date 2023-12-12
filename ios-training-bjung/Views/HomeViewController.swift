@@ -12,6 +12,8 @@ import os
 final class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var minTemperatureLabel: UILabel!
+    @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     private var presenter: HomePresenterInput
     
@@ -43,12 +45,37 @@ final class HomeViewController: UIViewController {
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
         presenter.loadWeatherData()
     }
+    
+    private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {
+        let imageResId: String
+        let color: UIColor
+        
+        switch response {
+        case "sunny":
+            imageResId = "ic_sunny"
+            color = .red
+        case "rainy":
+            imageResId = "ic_rainy"
+            color = .systemBlue
+        case "cloudy":
+            imageResId = "ic_cloudy"
+            color = .gray
+        default:
+            fatalError("unknown result")
+        }
+        
+        return (imageResId, color)
+    }
 }
 
 extension HomeViewController: HomePresenterOutput {
     
-    func updateInfoDisplay(imageResId: String, color: UIColor) {
-        imageView.image = UIImage(imageLiteralResourceName: imageResId).withTintColor(color)
+    func updateInfoDisplay(response: WeatherResponse) {
+        let resource = getDisplayResource(response: response.weatherCondition)
+        
+        imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
+        minTemperatureLabel.text = String(response.minTemperature)
+        maxTemperatureLabel.text = String(response.maxTemperature)
     }
     
     func showAlertControllerByError(title: String, message: String) {
