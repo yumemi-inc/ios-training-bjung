@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1036CC2B2B27FC7B00BD78B6 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */; };
 		10B89C512B16C3DB001C0E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C502B16C3DB001C0E96 /* AppDelegate.swift */; };
 		10B89C532B16C3DB001C0E96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */; };
 		10B89C552B16C3DB001C0E96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C542B16C3DB001C0E96 /* HomeViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		10B89C4D2B16C3DB001C0E96 /* ios-training-bjung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-training-bjung.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B89C502B16C3DB001C0E96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1036CC292B27FC6700BD78B6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		1070B7752B21532100F8C77D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		10B89C4F2B16C3DB001C0E96 /* ios-training-bjung */ = {
 			isa = PBXGroup;
 			children = (
+				1036CC292B27FC6700BD78B6 /* Common */,
 				1070B77A2B2153C600F8C77D /* Storyboards */,
 				1070B7772B21533500F8C77D /* Presenters */,
 				1070B7762B21532F00F8C77D /* Models */,
@@ -318,6 +329,7 @@
 				10B89C512B16C3DB001C0E96 /* AppDelegate.swift in Sources */,
 				10B89C532B16C3DB001C0E96 /* SceneDelegate.swift in Sources */,
 				10E1140E2B19A90A00117A7D /* HomePresenter.swift in Sources */,
+				1036CC2B2B27FC7B00BD78B6 /* Mapper.swift in Sources */,
 				10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */,
 				10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */,
 				10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */,
