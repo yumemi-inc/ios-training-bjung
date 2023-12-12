@@ -48,8 +48,14 @@ final class HomePresenter: HomePresenterInput {
                 case YumemiWeatherError.invalidParameterError:
                     view?.showAlertControllerByError(title: "通信エラー", message: "妥当なリクエストではありません")
                 case YumemiWeatherError.unknownError:
-                    view?.showAlertControllerByError(title: "エラー", message: "原因不明のエラーが発生しました")
+                    view?.showAlertControllerByError(title: "通信エラー", message: "原因不明のエラーが発生しました")
                 }
+                print(error.localizedDescription)
+            } catch let error as AppError {
+                view?.showAlertControllerByError(title: "処理エラー", message: "処理にエラーが発生しました\n" + "エラーコード : \(error.errorCode)")
+                print(error.localizedDescription)
+            } catch {
+                view?.showAlertControllerByError(title: "エラー", message: "原因不明のエラーが発生しました")
                 print(error.localizedDescription)
             }
         }

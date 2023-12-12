@@ -33,7 +33,7 @@ final class Mapper {
     
     func encodeWeatherRequest(request: WeatherRequest) throws -> String {
         let jsonData = try encoder.encode(request)
-        guard let result = String(data: jsonData, encoding: .utf8) else { fatalError("Failed to encode to JSON") }
+        guard let result = String(data: jsonData, encoding: .utf8) else { throw AppError.jsonEncodeError }
 
         return result
     }
@@ -41,7 +41,7 @@ final class Mapper {
     func decodeWeatherResponse(json: String) throws -> WeatherResponse {
         guard let responseData = json.data(using: .utf8),
               let result = try? decoder.decode(WeatherResponse.self, from: responseData) else {
-            fatalError("Failed to encode to JSON")
+            throw AppError.jsonDecodeError
         }
         return result
     }
