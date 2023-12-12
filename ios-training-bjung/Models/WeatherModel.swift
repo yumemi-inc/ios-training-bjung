@@ -15,7 +15,6 @@ protocol WeatherModelInput {
 }
 
 final class WeatherModel: WeatherModelInput {
-
     private var yumemiWeather: YumemiWeather.Type
     
     init(yumemiWeather: YumemiWeather.Type) {
