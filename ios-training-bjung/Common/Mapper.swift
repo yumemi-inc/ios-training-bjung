@@ -36,7 +36,6 @@ final class Mapper {
               let result = String(data: jsonData, encoding: .utf8) else {
             throw AppError.jsonEncodeError
         }
-
         return result
     }
     
