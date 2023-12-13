@@ -35,14 +35,14 @@ final class Router {
         
         presenter.inject(view: nextViewController)
         
-        show(from: previousViewController, to: nextViewController)
+        present(from: previousViewController, to: nextViewController)
     }
     
     func dissmiss(target: UIViewController) {
         target.dismiss(animated: true)
     }
 
-    private func show(
+    private func present(
         from previousViewController: UIViewController,
         to nextViewController: UIViewController
     ) {
