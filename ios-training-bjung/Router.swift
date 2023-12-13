@@ -44,8 +44,7 @@ final class Router {
 
     private func show(
         from previousViewController: UIViewController,
-        to nextViewController: UIViewController,
-        completion:(() -> Void)? = nil
+        to nextViewController: UIViewController
     ) {
         previousViewController.present(nextViewController, animated: true)
     }
