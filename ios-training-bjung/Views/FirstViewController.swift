@@ -16,6 +16,6 @@ final class FirstViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Router.shared.showHomeView(previousViewController: self)
+        Router.shared.showHomeView(from: self)
     }
 }

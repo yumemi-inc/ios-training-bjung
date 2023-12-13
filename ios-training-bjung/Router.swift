@@ -23,7 +23,7 @@ final class Router {
         return window
     }
     
-    func showHomeView(previousViewController: UIViewController) {
+    func showHomeView(from previousViewController: UIViewController) {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
         let model = WeatherModel(yumemiWeather: YumemiWeather.self)
@@ -35,7 +35,7 @@ final class Router {
         
         presenter.inject(view: nextViewController)
         
-        show(previousViewController: previousViewController, nextViewController: nextViewController)
+        show(from: previousViewController, to: nextViewController)
     }
     
     func dissmiss(target: UIViewController) {
@@ -43,8 +43,8 @@ final class Router {
     }
 
     private func show(
-        previousViewController: UIViewController,
-        nextViewController: UIViewController,
+        from previousViewController: UIViewController,
+        to nextViewController: UIViewController,
         completion:(() -> Void)? = nil
     ) {
         previousViewController.present(nextViewController, animated: true)
