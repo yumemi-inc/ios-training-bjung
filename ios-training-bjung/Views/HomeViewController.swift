@@ -36,6 +36,11 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(loadWeatherData), name: .onAppForeground, object: nil)
+    }
+    
+    @objc func loadWeatherData() {
+        presenter.loadWeatherData()
     }
 
     @IBAction func onCloseButtonClick(_ sender: Any) {
@@ -43,7 +48,7 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
-        presenter.loadWeatherData()
+        loadWeatherData()
     }
     
     private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103603662B29A10D00D0AAD4 /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103603652B29A10D00D0AAD4 /* AppNotificationCenter.swift */; };
 		1036CC2B2B27FC7B00BD78B6 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */; };
 		1036CC2D2B28015400BD78B6 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036CC2C2B28015400BD78B6 /* AppError.swift */; };
 		10B89C512B16C3DB001C0E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C502B16C3DB001C0E96 /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		103603652B29A10D00D0AAD4 /* AppNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
 		1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		1036CC2C2B28015400BD78B6 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		10B89C4D2B16C3DB001C0E96 /* ios-training-bjung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-training-bjung.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				10B89C592B16C3DC001C0E96 /* Assets.xcassets */,
 				10B89C5E2B16C3DC001C0E96 /* Info.plist */,
 				10D758C22B1EC5D1002E4EB6 /* Router.swift */,
+				103603652B29A10D00D0AAD4 /* AppNotificationCenter.swift */,
 			);
 			path = "ios-training-bjung";
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */,
 				10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */,
 				10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */,
+				103603662B29A10D00D0AAD4 /* AppNotificationCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
