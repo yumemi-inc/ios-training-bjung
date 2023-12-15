@@ -44,7 +44,6 @@ final class HomeViewController: UIViewController {
     @objc func intoForeground() {
         loadWeatherData()
     }
-    
 
     func loadWeatherData() {
         presenter.loadWeatherData()
