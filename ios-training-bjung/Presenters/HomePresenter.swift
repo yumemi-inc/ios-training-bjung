@@ -33,13 +33,15 @@ final class HomePresenter: HomePresenterInput {
     
     @MainActor
     func loadWeatherData() {
+        print("2")
         // 非同期処理が行われることはないが、
         // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
+                print("3")
                 let request = WeatherRequest(area: "tokyo", date: Date())
                 let response = try await model.fetchWeatherData(request: request)
-                
+                print("4")
                 view?.updateInfoDisplay(updatedInfo: response)
             } catch let error as YumemiWeatherError {
                 switch error {
@@ -57,5 +59,6 @@ final class HomePresenter: HomePresenterInput {
                 print(error.localizedDescription)
             }
         }
+        print("7")
     }
 }
