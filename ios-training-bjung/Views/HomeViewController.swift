@@ -17,6 +17,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var reloadButton: UIButton!
     
     private var presenter: HomePresenterInput
     
@@ -45,6 +46,8 @@ final class HomeViewController: UIViewController {
     }
     
     func loadWeatherData() {
+        indicator.startAnimating()
+        reloadButton.isEnabled = false
         presenter.loadWeatherData()
     }
 
@@ -88,10 +91,12 @@ extension HomeViewController: HomePresenterOutput {
         minTemperatureLabel.text = String(response.minTemperature)
         maxTemperatureLabel.text = String(response.maxTemperature)
         indicator.stopAnimating()
+        reloadButton.isEnabled = true
     }
     
     func showAlertControllerByError(title: String, message: String) {
         indicator.stopAnimating()
+        reloadButton.isEnabled = true
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
