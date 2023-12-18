@@ -11,14 +11,11 @@ import UIKit
 
 protocol HomePresenterInput {
     @MainActor
-    func loadWeatherData()
-}
+    func loadWeatherData(completion: @escaping (WeatherResponse) -> ())}
 
 protocol HomePresenterOutput: AnyObject {
     @MainActor
     func showLoadingUI()
-    @MainActor
-    func updateInfoDisplay(updatedInfo response: WeatherResponse)
     @MainActor
     func showAlertControllerByError(title: String, message: String)
 }
@@ -35,7 +32,7 @@ final class HomePresenter: HomePresenterInput {
         self.view = view
     }
     
-    func loadWeatherData() {
+    func loadWeatherData(completion: @escaping (WeatherResponse) -> ()) {
         // 非同期処理が行われることはないが、
         // API 通信が課題なのであえて async await を使って表現
         Task {
@@ -44,7 +41,7 @@ final class HomePresenter: HomePresenterInput {
                 let request = WeatherRequest(area: "tokyo", date: Date())
                 let response = try await model.fetchWeatherData(request: request)
                 
-                view?.updateInfoDisplay(updatedInfo: response)
+                completion(response)
             } catch let error as YumemiWeatherError {
                 switch error {
                 case YumemiWeatherError.invalidParameterError:
