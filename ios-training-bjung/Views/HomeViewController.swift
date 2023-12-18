@@ -45,15 +45,12 @@ final class HomeViewController: UIViewController {
         loadWeatherData()
     }
     
+
     func loadWeatherData() {
         presenter.loadWeatherData { response in
             let resource = self.getDisplayResource(response: response.weatherCondition)
             
-            self.imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
-            self.minTemperatureLabel.text = String(response.minTemperature)
-            self.maxTemperatureLabel.text = String(response.maxTemperature)
-            self.indicator.stopAnimating()
-            self.reloadButton.isEnabled = true
+            self.updateDisplayScreen(response: response)
         }
     }
 
@@ -84,6 +81,16 @@ final class HomeViewController: UIViewController {
         }
         
         return (imageResId, color)
+    }
+    
+    private func updateDisplayScreen(response: WeatherResponse) {
+        let resource = getDisplayResource(response: response.weatherCondition)
+        
+        imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
+        minTemperatureLabel.text = String(response.minTemperature)
+        maxTemperatureLabel.text = String(response.maxTemperature)
+        indicator.stopAnimating()
+        reloadButton.isEnabled = true
     }
 }
 
