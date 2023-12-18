@@ -97,8 +97,6 @@ extension HomeViewController: HomePresenterOutput {
         reloadButton.isEnabled = true
     }
     
-
-    
     func showAlertControllerByError(title: String, message: String) {
         indicator.stopAnimating()
         reloadButton.isEnabled = true
