@@ -77,7 +77,7 @@ final class HomeViewController: UIViewController {
         
         return (imageResId, color)
     }
-
+    
 }
 
 extension HomeViewController: HomePresenterOutput {
