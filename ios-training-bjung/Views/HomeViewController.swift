@@ -26,7 +26,7 @@ final class HomeViewController: UIViewController {
     }
     
     deinit {
-        Logger().debug("HomeViewController deinit")
+        Logger(subsystem: Bundle.main.bundleIdentifier!, category: "homeView").debug("HomeViewController deinit")
     }
 
     override func viewDidLoad() {

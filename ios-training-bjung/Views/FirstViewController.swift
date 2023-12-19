@@ -17,7 +17,7 @@ final class FirstViewController: UIViewController {
     }
     
     deinit {
-        Logger().debug("FirstViewController deinit")
+        Logger(subsystem: Bundle.main.bundleIdentifier!, category: "firstView").debug("FirstViewController deinit")
     }
     
     override func viewDidAppear(_ animated: Bool) {
