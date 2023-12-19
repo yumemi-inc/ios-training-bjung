@@ -19,6 +19,7 @@
 		10B89C5D2B16C3DC001C0E96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */; };
 		10B89C682B16C3DC001C0E96 /* ios_training_bjungTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C672B16C3DC001C0E96 /* ios_training_bjungTests.swift */; };
 		10B89C822B16C807001C0E96 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 10B89C812B16C807001C0E96 /* YumemiWeather */; };
+		10B8E1542B317A9E00E148DF /* FirstPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8E1532B317A9E00E148DF /* FirstPresenter.swift */; };
 		10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D758C22B1EC5D1002E4EB6 /* Router.swift */; };
 		10D758C52B1EDA55002E4EB6 /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D758C42B1EDA55002E4EB6 /* FirstView.storyboard */; };
 		10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D758C62B1EDA8B002E4EB6 /* FirstViewController.swift */; };
@@ -53,6 +54,7 @@
 		10B89C632B16C3DC001C0E96 /* ios-training-bjungTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-training-bjungTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B89C672B16C3DC001C0E96 /* ios_training_bjungTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungTests.swift; sourceTree = "<group>"; };
 		10B89C732B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		10B8E1532B317A9E00E148DF /* FirstPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPresenter.swift; sourceTree = "<group>"; };
 		10D758C22B1EC5D1002E4EB6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		10D758C42B1EDA55002E4EB6 /* FirstView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
 		10D758C62B1EDA8B002E4EB6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				10E1140D2B19A90A00117A7D /* HomePresenter.swift */,
+				10B8E1532B317A9E00E148DF /* FirstPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */,
 				10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */,
 				10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */,
+				10B8E1542B317A9E00E148DF /* FirstPresenter.swift in Sources */,
 				103603662B29A10D00D0AAD4 /* AppNotificationCenter.swift in Sources */,
 				10E659262B3ABC37007DE50B /* WeatherCondition.swift in Sources */,
 			);

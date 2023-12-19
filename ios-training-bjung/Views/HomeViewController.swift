@@ -28,7 +28,7 @@ final class HomeViewController: UIViewController {
     
     // 独自 init を作ったので必要になる
     required init?(coder: NSCoder) {
-            fatalError()
+        fatalError()
     }
     
     deinit {

@@ -16,7 +16,13 @@ final class Router {
     func showFirstView(windowScene: UIWindowScene) -> UIWindow {
         let window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "FirstView", bundle: nil)
-        let viewController = storyboard.instantiateInitialViewController()
+        
+        let model = WeatherModel()
+        let presenter = FirstPresenter(model: model)
+        let viewController = storyboard.instantiateInitialViewController() { coder in
+            FirstViewController.init(coder: coder, presenter: presenter)
+        }!
+        presenter.inject(view: viewController)
         
         window.rootViewController = viewController
         window.makeKeyAndVisible()

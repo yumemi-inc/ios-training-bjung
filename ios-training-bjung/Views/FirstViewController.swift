@@ -12,6 +12,18 @@ private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, ca
 
 final class FirstViewController: UIViewController {
     
+    private var presenter: FirstPresenterInput
+    
+    init?(coder: NSCoder, presenter: FirstPresenterInput) {
+        self.presenter = presenter
+        super.init(coder: coder)
+    }
+    
+    // 独自 init を作ったので必要になる
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,4 +38,8 @@ final class FirstViewController: UIViewController {
         super.viewDidAppear(animated)
         Router.shared.showHomeView(from: self)
     }
+}
+
+extension FirstViewController: FirstPresenterOutput {
+    
 }
