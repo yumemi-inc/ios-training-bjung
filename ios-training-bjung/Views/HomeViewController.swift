@@ -15,6 +15,8 @@ final class HomeViewController: UIViewController {
     
     private var presenter: HomePresenterInput
     
+    private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "homeView")
+    
     init?(coder: NSCoder, presenter: HomePresenterInput) {
         self.presenter = presenter
         super.init(coder: coder)
@@ -26,7 +28,7 @@ final class HomeViewController: UIViewController {
     }
     
     deinit {
-        Logger().debug("HomeViewController deinit")
+        logger.debug("HomeViewController deinit")
     }
 
     override func viewDidLoad() {
