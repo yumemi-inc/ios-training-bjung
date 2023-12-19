@@ -7,12 +7,15 @@
 
 import UIKit
 import YumemiWeather
+import os
 
 final class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
     private var presenter: HomePresenterInput
+    
+    private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "homeView")
     
     init?(coder: NSCoder, presenter: HomePresenterInput) {
         self.presenter = presenter
@@ -22,6 +25,10 @@ final class HomeViewController: UIViewController {
     // 独自 init を作ったので必要になる
     required init?(coder: NSCoder) {
             fatalError()
+    }
+    
+    deinit {
+        logger.debug("HomeViewController deinit")
     }
 
     override func viewDidLoad() {
