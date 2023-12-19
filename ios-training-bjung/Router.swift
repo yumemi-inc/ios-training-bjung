@@ -23,26 +23,29 @@ final class Router {
         return window
     }
     
-    func showHomeView(from: UIViewController) {
+    func showHomeView(from previousViewController: UIViewController) {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
         let model = WeatherModel(yumemiWeather: YumemiWeather.self)
         let presenter = HomePresenter(model: model)
-        let viewController = storyboard.instantiateInitialViewController() { coder in
+        let nextViewController = storyboard.instantiateInitialViewController() { coder in
             HomeViewController(coder: coder, presenter: presenter)
         }!
-        viewController.modalPresentationStyle = .fullScreen
+        nextViewController.modalPresentationStyle = .fullScreen
         
-        presenter.inject(view: viewController)
+        presenter.inject(view: nextViewController)
         
-        show(from: from, to: viewController)
+        present(from: previousViewController, to: nextViewController)
     }
     
     func dissmiss(target: UIViewController) {
         target.dismiss(animated: true)
     }
 
-    private func show(from: UIViewController, to: UIViewController, completion:(() -> Void)? = nil) {
-        from.present(to, animated: true)
+    private func present(
+        from previousViewController: UIViewController,
+        to nextViewController: UIViewController
+    ) {
+        previousViewController.present(nextViewController, animated: true)
     }
 }
