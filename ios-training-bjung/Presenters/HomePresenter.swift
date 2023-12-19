@@ -37,7 +37,7 @@ final class HomePresenter: HomePresenterInput {
         // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
-                let result = try await model.fetchWeatherData(location: "tokyo")
+                let result = try await model.fetchWeatherData(at: "tokyo")
                 let resource = getDisplayResource(response: result)
 
                 view?.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
