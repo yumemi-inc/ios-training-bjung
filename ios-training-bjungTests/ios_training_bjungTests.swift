@@ -75,7 +75,9 @@ final class ios_training_bjungTests: XCTestCase {
             XCTAssertEqual(homeViewController.imageView.image, testCase.expect)
         }
         
-//        XCTAssertEqual(homeViewController.minTemperatureLabel.text, "10")
+        // Verify
+        XCTAssertEqual(homeViewController.minTemperatureLabel.text, "10")
+        XCTAssertEqual(homeViewController.maxTemperatureLabel.text, "20")
     }
 
     func testPerformanceExample() throws {
