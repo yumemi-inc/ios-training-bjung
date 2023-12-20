@@ -46,9 +46,7 @@ final class HomeViewController: UIViewController {
     }
     
     func loadWeatherData() async {
-        print("1")
         await presenter.loadWeatherData()
-        print("8")
     }
 
     @IBAction func onCloseButtonClick(_ sender: Any) {
@@ -86,13 +84,11 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomePresenterOutput {
     
     func updateInfoDisplay(updatedInfo response: WeatherResponse) {
-        print("5")
         let resource = getDisplayResource(response: response.weatherCondition)
         
         imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
         minTemperatureLabel.text = String(response.minTemperature)
         maxTemperatureLabel.text = String(response.maxTemperature)
-        print("6")
     }
     
     func showAlertControllerByError(title: String, message: String) {
