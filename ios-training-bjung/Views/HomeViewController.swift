@@ -36,12 +36,18 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(loadWeatherData), name: .onAppForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(intoForeground), name: .onAppForeground, object: nil)
     }
     
-    @objc func loadWeatherData() {
+    @objc func intoForeground() {
+        Task {
+            await loadWeatherData()
+        }
+    }
+    
+    func loadWeatherData() async {
         print("1")
-        presenter.loadWeatherData()
+        await presenter.loadWeatherData()
         print("8")
     }
 
@@ -50,7 +56,9 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
-        loadWeatherData()
+        Task {
+            await loadWeatherData()
+        }
     }
     
     private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {

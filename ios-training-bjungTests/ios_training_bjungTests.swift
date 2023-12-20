@@ -14,7 +14,7 @@ class WeatherModelMock: WeatherModelInput {
         return "sunny"
     }
     
-    func fetchWeatherData(location: String) async throws -> String {
+    func fetchWeatherData(at location: String) async throws -> String {
         return "sunny"
     }
     
@@ -33,6 +33,7 @@ final class ios_training_bjungTests: XCTestCase {
     var homeViewController: HomeViewController!
     var homePresenter: HomePresenter!
 
+    @MainActor
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
@@ -41,13 +42,15 @@ final class ios_training_bjungTests: XCTestCase {
         self.homeViewController = storyboard.instantiateViewController(identifier: "HomeView", creator: { coder in
             HomeViewController(coder: coder, presenter: self.homePresenter)
         })
+        self.homePresenter.inject(view: self.homeViewController)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    @MainActor
+    func testExample() async throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.
@@ -57,19 +60,20 @@ final class ios_training_bjungTests: XCTestCase {
         XCTAssertEqual(homeViewController.minTemperatureLabel.text, "--")
         
 //        let task = Task {
-//            homePresenter.loadWeatherData()
+//            await homeViewController.loadWeatherData()
 //        }
 //        await task.value
+        await homeViewController.loadWeatherData()
         
         
-        let expectation = self.expectation(description: "Async function completed")
-        homeViewController.loadWeatherData { res in
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 10.0)
+//        let expectation = self.expectation(description: "Async function completed")
+//        homeViewController.loadWeatherData { res in
+//            expectation.fulfill()
+//        }
+//
+//        wait(for: [expectation], timeout: 10.0)
         
-//        XCTAssertEqual(homeViewController.minTemperatureLabel.text, "10")
+        XCTAssertEqual(homeViewController.minTemperatureLabel.text, "10")
     }
 
     func testPerformanceExample() throws {
