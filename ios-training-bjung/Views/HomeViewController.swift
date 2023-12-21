@@ -51,8 +51,8 @@ extension HomeViewController: HomePresenterOutput {
         imageView.image = UIImage(imageLiteralResourceName: imageResId).withTintColor(color)
     }
     
-    func showAlertControllerByError() {
-        let alertController = UIAlertController(title: "通信失敗", message: "通信中にエラーが発生しました。", preferredStyle: .alert)
+    func showAlertControllerByError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         

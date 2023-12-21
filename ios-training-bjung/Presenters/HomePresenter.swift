@@ -16,7 +16,7 @@ protocol HomePresenterInput {
 
 protocol HomePresenterOutput: AnyObject {
     func updateInfoDisplay(imageResId: String, color: UIColor)
-    func showAlertControllerByError()
+    func showAlertControllerByError(title: String, message: String)
 }
 
 final class HomePresenter: HomePresenterInput {
@@ -41,8 +41,13 @@ final class HomePresenter: HomePresenterInput {
                 let resource = getDisplayResource(response: result)
 
                 view?.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
-            } catch {
-                view?.showAlertControllerByError()
+            } catch let error as YumemiWeatherError {
+                switch error {
+                case YumemiWeatherError.invalidParameterError:
+                    view?.showAlertControllerByError(title: "通信エラー", message: "妥当なリクエストではありません")
+                case YumemiWeatherError.unknownError:
+                    view?.showAlertControllerByError(title: "エラー", message: "原因不明のエラーが発生しました")
+                }
                 print(error.localizedDescription)
             }
         }
