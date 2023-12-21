@@ -56,7 +56,7 @@ extension HomeViewController: HomePresenterOutput {
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
 }
 
