@@ -12,6 +12,8 @@ private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, ca
 
 final class FirstViewController: UIViewController {
     
+    @IBOutlet weak var weatherListTableView: UITableView!
+    
     private var presenter: FirstPresenterInput
     
     init?(coder: NSCoder, presenter: FirstPresenterInput) {
@@ -28,18 +30,34 @@ final class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        weatherListTableView.frame = view.frame
+        weatherListTableView.delegate = self
+        weatherListTableView.dataSource = self
     }
     
     deinit {
         logger.debug("FirstViewController deinit")
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        Router.shared.showHomeView(from: self)
-    }
 }
 
 extension FirstViewController: FirstPresenterOutput {
+    
+}
+
+extension FirstViewController: UITableViewDelegate {
+    
+}
+
+extension FirstViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = weatherListTableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        cell.textLabel?.text = "sample"
+        return cell
+    }
+    
     
 }
