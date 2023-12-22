@@ -10,6 +10,7 @@ import YumemiWeather
 
 protocol WeatherModelInput {
     func fetchWeatherData() async throws -> String
+    func fetchWeatherData(at location: String) async throws -> String
 }
 
 final class WeatherModel: WeatherModelInput {
@@ -22,5 +23,9 @@ final class WeatherModel: WeatherModelInput {
     
     func fetchWeatherData() async throws -> String {
         return yumemiWeather.fetchWeatherCondition()
+    }
+    
+    func fetchWeatherData(at location: String) async throws -> String {
+        return try yumemiWeather.fetchWeatherCondition(at: location)
     }
 }

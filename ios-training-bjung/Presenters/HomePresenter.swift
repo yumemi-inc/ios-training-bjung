@@ -16,6 +16,7 @@ protocol HomePresenterInput {
 
 protocol HomePresenterOutput: AnyObject {
     func updateInfoDisplay(imageResId: String, color: UIColor)
+    func showAlertControllerByError(title: String, message: String)
 }
 
 final class HomePresenter: HomePresenterInput {
@@ -36,11 +37,17 @@ final class HomePresenter: HomePresenterInput {
         // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
-                let result = try await model.fetchWeatherData()
+                let result = try await model.fetchWeatherData(at: "tokyo")
                 let resource = getDisplayResource(response: result)
 
                 view?.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
-            } catch {
+            } catch let error as YumemiWeatherError {
+                switch error {
+                case YumemiWeatherError.invalidParameterError:
+                    view?.showAlertControllerByError(title: "通信エラー", message: "妥当なリクエストではありません")
+                case YumemiWeatherError.unknownError:
+                    view?.showAlertControllerByError(title: "エラー", message: "原因不明のエラーが発生しました")
+                }
                 print(error.localizedDescription)
             }
         }

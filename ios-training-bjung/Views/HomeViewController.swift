@@ -50,5 +50,13 @@ extension HomeViewController: HomePresenterOutput {
     func updateInfoDisplay(imageResId: String, color: UIColor) {
         imageView.image = UIImage(imageLiteralResourceName: imageResId).withTintColor(color)
     }
+    
+    func showAlertControllerByError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(alertController, animated: true)
+    }
 }
 
