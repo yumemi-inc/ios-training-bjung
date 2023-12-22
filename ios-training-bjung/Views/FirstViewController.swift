@@ -30,9 +30,6 @@ final class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        weatherListTableView.frame = view.frame
-        weatherListTableView.delegate = self
-        weatherListTableView.dataSource = self
     }
     
     deinit {
@@ -54,10 +51,12 @@ extension FirstViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = weatherListTableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
-        cell.textLabel?.text = "sample"
+        guard let cell = weatherListTableView.dequeueReusableCell(withIdentifier: "weatherListTableCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
+        cell.locationLabel.text = "tokyo"
+        cell.weatherImageView.image = UIImage(imageLiteralResourceName: "ic_sunny")
+        cell.minTemperatureLabel.text = "10"
+        cell.maxTemperatureLabel.text = "20"
+
         return cell
     }
-    
-    
 }
