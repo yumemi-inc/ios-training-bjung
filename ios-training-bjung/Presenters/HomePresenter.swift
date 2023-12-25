@@ -15,7 +15,7 @@ protocol HomePresenterInput {
 }
 
 protocol HomePresenterOutput: AnyObject {
-    func updateInfoDisplay(response: WeatherResponse)
+    func updateInfoDisplay(updatedInfo response: WeatherResponse)
     func showAlertControllerByError(title: String, message: String)
 }
 
@@ -40,7 +40,7 @@ final class HomePresenter: HomePresenterInput {
                 let request = WeatherRequest(area: "tokyo", date: Date())
                 let response = try await model.fetchWeatherData(request: request)
                 
-                view?.updateInfoDisplay(response: response)
+                view?.updateInfoDisplay(updatedInfo: response)
             } catch let error as YumemiWeatherError {
                 switch error {
                 case YumemiWeatherError.invalidParameterError:

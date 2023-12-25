@@ -70,7 +70,7 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: HomePresenterOutput {
     
-    func updateInfoDisplay(response: WeatherResponse) {
+    func updateInfoDisplay(updatedInfo response: WeatherResponse) {
         let resource = getDisplayResource(response: response.weatherCondition)
         
         imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
