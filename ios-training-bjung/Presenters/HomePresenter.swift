@@ -37,12 +37,10 @@ final class HomePresenter: HomePresenterInput {
         // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
-                // view が nil の場合、 api を実行せず処理を終了
-                guard let view else { return }
                 let request = WeatherRequest(area: "tokyo", date: Date())
                 let response = try await model.fetchWeatherData(request: request)
                 
-                view.updateInfoDisplay(response: response)
+                view?.updateInfoDisplay(response: response)
             } catch let error as YumemiWeatherError {
                 switch error {
                 case YumemiWeatherError.invalidParameterError:
