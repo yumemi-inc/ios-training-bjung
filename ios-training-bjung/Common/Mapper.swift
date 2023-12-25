@@ -32,8 +32,10 @@ final class Mapper {
     }()
     
     func encodeWeatherRequest(request: WeatherRequest) throws -> String {
-        let jsonData = try encoder.encode(request)
-        guard let result = String(data: jsonData, encoding: .utf8) else { throw AppError.jsonEncodeError }
+        guard let jsonData = try? encoder.encode(request), 
+              let result = String(data: jsonData, encoding: .utf8) else {
+            throw AppError.jsonEncodeError
+        }
 
         return result
     }
