@@ -13,7 +13,7 @@ protocol WeatherModelInput {
     func fetchWeatherData(at location: String) async throws -> String
     func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse
     func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable (Result<WeatherResponse, Error>) -> ())
-    func fetchWeatherListData(request: WeatherListRequest) async throws -> WeatherListResponse
+    func fetchWeatherListData(request: WeatherListRequest) async throws -> [WeatherListResponse]
 }
 
 
@@ -46,7 +46,7 @@ final class WeatherModel: WeatherModelInput {
         }
     }
     
-    func fetchWeatherListData(request: WeatherListRequest) async throws -> WeatherListResponse  {
+    func fetchWeatherListData(request: WeatherListRequest) async throws -> [WeatherListResponse]  {
         let jsonString = try Mapper.encodeWeatherListRequest(request: request)
         let response = try YumemiWeather.syncFetchWeatherList(jsonString)
         return try Mapper.decodeWeatherListResponse(json: response)
@@ -59,7 +59,7 @@ struct WeatherRequest: Encodable {
 }
 
 struct WeatherListRequest: Codable {
-    let areaList: [String]
+    let areas: [String]
     let date: Date
 }
 
@@ -74,5 +74,6 @@ extension WeatherResponse: Equatable {
 }
 
 struct WeatherListResponse: Decodable {
-    let weatherList: [WeatherListResponse]
+    let info: WeatherResponse
+    let area: String
 }

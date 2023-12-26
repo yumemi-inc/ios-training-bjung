@@ -35,6 +35,20 @@ final class FirstViewController: UIViewController {
     deinit {
         logger.debug("FirstViewController deinit")
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Task {
+            await loadWeatherListData()
+        }
+    }
+    
+    func loadWeatherListData() async {
+        let locations = ["Tokyo", "Osaka", "Fukuoka", "Sendai", "Sapporo"]
+        await presenter.loadWeatherListData(at: locations) {
+            
+        }
+    }
 }
 
 extension FirstViewController: FirstPresenterOutput {
