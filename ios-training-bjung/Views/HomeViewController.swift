@@ -20,9 +20,11 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     
     private var presenter: HomePresenterInput
+    private let weatherInfo: WeatherResponse
     
-    init?(coder: NSCoder, presenter: HomePresenterInput) {
+    init?(coder: NSCoder, presenter: HomePresenterInput, weatherInfo: WeatherResponse) {
         self.presenter = presenter
+        self.weatherInfo = weatherInfo
         super.init(coder: coder)
     }
     
@@ -39,6 +41,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(intoForeground), name: .onAppForeground, object: nil)
+        updateDisplayScreen(updatedInfo: weatherInfo)
     }
     
     @objc func intoForeground() {

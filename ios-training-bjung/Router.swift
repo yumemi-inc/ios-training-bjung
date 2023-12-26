@@ -30,13 +30,13 @@ final class Router {
         return window
     }
     
-    func showHomeView(from previousViewController: UIViewController) {
+    func showHomeView(from previousViewController: UIViewController, weatherInfo: WeatherResponse) {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
         let model = WeatherModel()
         let presenter = HomePresenter(model: model)
         let nextViewController = storyboard.instantiateInitialViewController() { coder in
-            HomeViewController(coder: coder, presenter: presenter)
+            HomeViewController(coder: coder, presenter: presenter, weatherInfo: weatherInfo)
         }!
         nextViewController.modalPresentationStyle = .fullScreen
         
