@@ -74,7 +74,7 @@ extension FirstViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = weatherListTableView.dequeueReusableCell(withIdentifier: "weatherListTableCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
         cell.locationLabel.text = self.weatherInfoList[indexPath.row].area
-        cell.weatherImageView.image = getDisplayUIImage(weatherCondition: self.weatherInfoList[indexPath.row].info.weatherCondition)
+        cell.weatherImageView.image = ConvertToUIImage.getDisplayUIImage(weatherCondition: self.weatherInfoList[indexPath.row].info.weatherCondition)
         cell.minTemperatureLabel.text = String(self.weatherInfoList[indexPath.row].info.minTemperature)
         cell.maxTemperatureLabel.text = String(self.weatherInfoList[indexPath.row].info.maxTemperature)
 
@@ -84,26 +84,5 @@ extension FirstViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Router.shared.showHomeView(from: self, weatherInfo: self.weatherInfoList[indexPath.row].info)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    private func getDisplayUIImage(weatherCondition: String) -> UIImage {
-        let imageResId: String
-        let color: UIColor
-        
-        switch weatherCondition {
-        case "sunny":
-            imageResId = "ic_sunny"
-            color = .red
-        case "rainy":
-            imageResId = "ic_rainy"
-            color = .systemBlue
-        case "cloudy":
-            imageResId = "ic_cloudy"
-            color = .gray
-        default:
-            fatalError("unknown result")
-        }
-        
-        return UIImage(imageLiteralResourceName: imageResId).withTintColor(color)
     }
 }

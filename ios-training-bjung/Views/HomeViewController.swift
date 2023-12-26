@@ -60,27 +60,6 @@ final class HomeViewController: UIViewController {
         loadWeatherData()
     }
     
-    private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {
-        let imageResId: String
-        let color: UIColor
-        
-        guard let weatherCondition = WeatherCondition(rawValue: response) else { fatalError("unknown result") }
-        
-        switch weatherCondition {
-        case .sunny:
-            imageResId = "ic_sunny"
-            color = .red
-        case .rainy:
-            imageResId = "ic_rainy"
-            color = .systemBlue
-        case .cloudy:
-            imageResId = "ic_cloudy"
-            color = .gray
-        }
-        
-        return (imageResId, color)
-    }
-    
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -91,9 +70,7 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     func updateDisplayScreen(updatedInfo response: WeatherResponse) {
-        let resource = getDisplayResource(response: response.weatherCondition)
-        
-        imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
+        imageView.image = ConvertToUIImage.getDisplayUIImage(weatherCondition: response.weatherCondition)
         minTemperatureLabel.text = String(response.minTemperature)
         maxTemperatureLabel.text = String(response.maxTemperature)
         indicator.stopAnimating()

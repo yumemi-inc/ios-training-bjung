@@ -27,6 +27,7 @@
 		10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D91C642B19B9ED00BAE764 /* WeatherModel.swift */; };
 		10E1140E2B19A90A00117A7D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1140D2B19A90A00117A7D /* HomePresenter.swift */; };
 		10E659262B3ABC37007DE50B /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E659252B3ABC37007DE50B /* WeatherCondition.swift */; };
+		10E659242B3AAB5F007DE50B /* ConvertToUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E659232B3AAB5F007DE50B /* ConvertToUIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		10D91C642B19B9ED00BAE764 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		10E1140D2B19A90A00117A7D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		10E659252B3ABC37007DE50B /* WeatherCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
+		10E659232B3AAB5F007DE50B /* ConvertToUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertToUIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */,
 				1036CC2C2B28015400BD78B6 /* AppError.swift */,
 				10E659252B3ABC37007DE50B /* WeatherCondition.swift */,
+				10E659232B3AAB5F007DE50B /* ConvertToUIImage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				1036CC2B2B27FC7B00BD78B6 /* Mapper.swift in Sources */,
 				10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */,
 				10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */,
+				10E659242B3AAB5F007DE50B /* ConvertToUIImage.swift in Sources */,
 				10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */,
 				10B8E1542B317A9E00E148DF /* FirstPresenter.swift in Sources */,
 				103603662B29A10D00D0AAD4 /* AppNotificationCenter.swift in Sources */,
