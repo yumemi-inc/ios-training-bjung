@@ -25,6 +25,7 @@
 		10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D758C62B1EDA8B002E4EB6 /* FirstViewController.swift */; };
 		10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D91C642B19B9ED00BAE764 /* WeatherModel.swift */; };
 		10E1140E2B19A90A00117A7D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1140D2B19A90A00117A7D /* HomePresenter.swift */; };
+		10E659262B3ABC37007DE50B /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E659252B3ABC37007DE50B /* WeatherCondition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		10D758C62B1EDA8B002E4EB6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		10D91C642B19B9ED00BAE764 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		10E1140D2B19A90A00117A7D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		10E659252B3ABC37007DE50B /* WeatherCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */,
 				1036CC2C2B28015400BD78B6 /* AppError.swift */,
+				10E659252B3ABC37007DE50B /* WeatherCondition.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				10D91C652B19B9ED00BAE764 /* WeatherModel.swift in Sources */,
 				10D758C72B1EDA8B002E4EB6 /* FirstViewController.swift in Sources */,
 				103603662B29A10D00D0AAD4 /* AppNotificationCenter.swift in Sources */,
+				10E659262B3ABC37007DE50B /* WeatherCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

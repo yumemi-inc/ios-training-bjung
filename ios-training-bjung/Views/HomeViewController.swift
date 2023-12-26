@@ -56,13 +56,13 @@ final class HomeViewController: UIViewController {
         let color: UIColor
         
         switch response {
-        case "sunny":
+        case WeatherCondition.sunny.rawValue:
             imageResId = "ic_sunny"
             color = .red
-        case "rainy":
+        case WeatherCondition.rainy.rawValue:
             imageResId = "ic_rainy"
             color = .systemBlue
-        case "cloudy":
+        case WeatherCondition.cloudy.rawValue:
             imageResId = "ic_cloudy"
             color = .gray
         default:
