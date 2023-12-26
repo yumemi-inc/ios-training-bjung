@@ -29,27 +29,23 @@ final class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-    }
-    
-    deinit {
-        logger.debug("FirstViewController deinit")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         Task {
             await loadWeatherListData()
         }
     }
-    
+        
     func loadWeatherListData() async {
         let locations = ["Tokyo", "Osaka", "Fukuoka", "Sendai", "Sapporo"]
         await presenter.loadWeatherListData(at: locations) { response in
             self.weatherInfoList = response
             self.weatherListTableView.reloadData()
         }
+    }
+    
+    deinit {
+        Logger().debug("FirstViewController deinit")
     }
 }
 
