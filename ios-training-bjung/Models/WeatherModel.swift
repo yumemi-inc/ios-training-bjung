@@ -11,10 +11,11 @@ import YumemiWeather
 protocol WeatherModelInput {
     func fetchWeatherData() async throws -> String
     func fetchWeatherData(at location: String) async throws -> String
+    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse
 }
 
 final class WeatherModel: WeatherModelInput {
-    
+
     private var yumemiWeather: YumemiWeather.Type
     
     init(yumemiWeather: YumemiWeather.Type) {
@@ -28,4 +29,23 @@ final class WeatherModel: WeatherModelInput {
     func fetchWeatherData(at location: String) async throws -> String {
         return try yumemiWeather.fetchWeatherCondition(at: location)
     }
+    
+    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
+        let mapper = Mapper.shared
+        let jsonString = try mapper.encodeWeatherRequest(request: request)
+        let response = try yumemiWeather.fetchWeather(jsonString)
+        return try mapper.decodeWeatherResponse(json: response)
+    }
+}
+
+struct WeatherRequest: Codable {
+    let area: String
+    let date: Date
+}
+
+struct WeatherResponse: Decodable {
+    let minTemperature: Int
+    let maxTemperature: Int
+    let weatherCondition: String
+    let date: Date
 }

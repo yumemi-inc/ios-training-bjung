@@ -15,7 +15,7 @@ protocol HomePresenterInput {
 }
 
 protocol HomePresenterOutput: AnyObject {
-    func updateInfoDisplay(imageResId: String, color: UIColor)
+    func updateInfoDisplay(updatedInfo response: WeatherResponse)
     func showAlertControllerByError(title: String, message: String)
 }
 
@@ -37,40 +37,25 @@ final class HomePresenter: HomePresenterInput {
         // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
-                let result = try await model.fetchWeatherData(at: "tokyo")
-                let resource = getDisplayResource(response: result)
-
-                view?.updateInfoDisplay(imageResId: resource.imageResId, color: resource.color)
+                let request = WeatherRequest(area: "tokyo", date: Date())
+                let response = try await model.fetchWeatherData(request: request)
+                
+                view?.updateInfoDisplay(updatedInfo: response)
             } catch let error as YumemiWeatherError {
                 switch error {
                 case YumemiWeatherError.invalidParameterError:
                     view?.showAlertControllerByError(title: "通信エラー", message: "妥当なリクエストではありません")
                 case YumemiWeatherError.unknownError:
-                    view?.showAlertControllerByError(title: "エラー", message: "原因不明のエラーが発生しました")
+                    view?.showAlertControllerByError(title: "通信エラー", message: "原因不明のエラーが発生しました")
                 }
+                print(error.localizedDescription)
+            } catch let error as AppError {
+                view?.showAlertControllerByError(title: "処理エラー", message: "処理にエラーが発生しました\n" + "エラーコード : \(error.errorCode)")
+                print(error.localizedDescription)
+            } catch {
+                view?.showAlertControllerByError(title: "エラー", message: "原因不明のエラーが発生しました")
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {
-        let imageResId: String
-        let color: UIColor
-        
-        switch response {
-        case "sunny": 
-            imageResId = "ic_sunny"
-            color = .red
-        case "rainy":
-            imageResId = "ic_rainy"
-            color = .systemBlue
-        case "cloudy":
-            imageResId = "ic_cloudy"
-            color = .gray
-        default:
-            fatalError("unknown result")
-        }
-        
-        return (imageResId, color)
     }
 }

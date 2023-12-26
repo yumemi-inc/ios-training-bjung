@@ -89,6 +89,8 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="lr7-Ih-hWs" id="kGL-na-JKk"/>
+                        <outlet property="maxTemperatureLabel" destination="7pz-yq-mFq" id="q3Y-HJ-8CD"/>
+                        <outlet property="minTemperatureLabel" destination="Ve6-h5-bvJ" id="Rb6-OX-jgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
