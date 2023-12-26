@@ -30,7 +30,9 @@ final class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.weatherListTableView.refreshControl = UIRefreshControl()
+        self.weatherListTableView.refreshControl?.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
+
         Task {
             await loadWeatherListData()
         }
@@ -41,6 +43,13 @@ final class FirstViewController: UIViewController {
         await presenter.loadWeatherListData(at: locations) { response in
             self.weatherInfoList = response
             self.weatherListTableView.reloadData()
+            self.weatherListTableView.refreshControl?.endRefreshing()
+        }
+    }
+    
+    @objc func refreshWeatherData() {
+        Task {
+            await loadWeatherListData()
         }
     }
     
