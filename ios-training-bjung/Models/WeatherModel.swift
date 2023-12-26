@@ -36,7 +36,7 @@ final class WeatherModel: WeatherModelInput {
     }
 }
 
-struct WeatherRequest: Codable {
+struct WeatherRequest: Encodable {
     let area: String
     let date: Date
 }
