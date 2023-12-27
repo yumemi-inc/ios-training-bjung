@@ -80,11 +80,7 @@ extension HomeViewController: HomePresenterOutput {
     func showAlertControllerByError(title: String, message: String) {
         indicator.stopAnimating()
         reloadButton.isEnabled = true
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        present(alertController, animated: true)
+        Router.shared.showAlertController(from: self, title: title, message: message)
     }
 }
 

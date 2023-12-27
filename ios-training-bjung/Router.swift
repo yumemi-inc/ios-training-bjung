@@ -45,6 +45,14 @@ final class Router {
         present(from: previousViewController, to: nextViewController)
     }
     
+    func showAlertController(from previousViewController: UIViewController, title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        previousViewController.present(alertController, animated: true)
+    }
+    
     func dissmiss(target: UIViewController) {
         target.dismiss(animated: true)
     }
