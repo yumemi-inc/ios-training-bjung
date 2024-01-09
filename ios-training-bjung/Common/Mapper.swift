@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Mapper {
+// 列挙型にしてインスタンス化できないことを担保する
+enum Mapper {
     
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
