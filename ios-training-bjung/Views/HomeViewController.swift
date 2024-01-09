@@ -55,18 +55,18 @@ final class HomeViewController: UIViewController {
         let imageResId: String
         let color: UIColor
         
-        switch response {
-        case WeatherCondition.sunny.rawValue:
+        guard let weatherCondition = WeatherCondition(rawValue: response) else { fatalError("unknown result") }
+        
+        switch weatherCondition {
+        case .sunny:
             imageResId = "ic_sunny"
             color = .red
-        case WeatherCondition.rainy.rawValue:
+        case .rainy:
             imageResId = "ic_rainy"
             color = .systemBlue
-        case WeatherCondition.cloudy.rawValue:
+        case .cloudy:
             imageResId = "ic_cloudy"
             color = .gray
-        default:
-            fatalError("unknown result")
         }
         
         return (imageResId, color)
