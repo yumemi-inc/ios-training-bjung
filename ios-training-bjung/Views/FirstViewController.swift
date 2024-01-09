@@ -23,6 +23,7 @@ final class FirstViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         Router.shared.showHomeView(from: self)
     }
 }
