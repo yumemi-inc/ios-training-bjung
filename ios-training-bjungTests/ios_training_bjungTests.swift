@@ -94,6 +94,21 @@ final class ios_training_bjungTests: XCTestCase {
         // Verify
         XCTAssertEqual(result, expect)
     }
+    
+    func testMapperJsonDecoder() throws {
+        // Setup
+        let calendar = Calendar(identifier: .gregorian)
+        let date = calendar.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0))!
+        let target = "{\"max_temperature\":25,\"date\":\"2020-04-01T12:00:00+09:00\",\"min_temperature\":7,\"weather_condition\":\"cloudy\"}"
+        
+        let expect = WeatherResponse(minTemperature: 7, maxTemperature: 25, weatherCondition: "cloudy", date: date)
+        
+        // Exercise
+        let result = try Mapper.decodeWeatherResponse(json: target)
+        
+        // Verify
+        XCTAssertEqual(result, expect)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
