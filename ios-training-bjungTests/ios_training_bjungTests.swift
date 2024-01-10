@@ -79,6 +79,21 @@ final class ios_training_bjungTests: XCTestCase {
         XCTAssertEqual(homeViewController.minTemperatureLabel.text, "10")
         XCTAssertEqual(homeViewController.maxTemperatureLabel.text, "20")
     }
+    
+    func testMapperJsonEncoder() throws {
+        // Setup
+        let calendar = Calendar(identifier: .gregorian)
+        let date = calendar.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0))!
+        let target = WeatherRequest(area: "Tokyo", date: date)
+        
+        let expect = "{\"area\":\"Tokyo\",\"date\":\"2020-04-01T12:00:00+09:00\"}"
+        
+        // Exercise
+        let result = try Mapper.encodeWeatherRequest(request: target)
+        
+        // Verify
+        XCTAssertEqual(result, expect)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

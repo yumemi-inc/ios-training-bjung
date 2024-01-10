@@ -20,6 +20,7 @@ enum Mapper {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        encoder.outputFormatting = .sortedKeys
         return encoder
     }()
     
