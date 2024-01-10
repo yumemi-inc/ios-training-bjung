@@ -8,10 +8,10 @@
 import UIKit
 import os
 
+private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "firstView")
+
 final class FirstViewController: UIViewController {
     
-    private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "firstView")
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
