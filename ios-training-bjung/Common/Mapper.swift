@@ -7,9 +7,8 @@
 
 import Foundation
 
-final class Mapper {
-    static let shared = Mapper()
-    private init() {}
+// 列挙型にしてインスタンス化できないことを担保する
+enum Mapper {
     
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -17,30 +16,29 @@ final class Mapper {
         return dateFormatter
     }()
     
-    private let encoder: JSONEncoder = {
+    private static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
         return encoder
     }()
     
-    private let decoder: JSONDecoder = {
+    private static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
     
-    func encodeWeatherRequest(request: WeatherRequest) throws -> String {
-        guard let jsonData = try? encoder.encode(request), 
+    static func encodeWeatherRequest(request: WeatherRequest) throws -> String {
+        guard let jsonData = try? encoder.encode(request),
               let result = String(data: jsonData, encoding: .utf8) else {
             throw AppError.jsonEncodeError
         }
-
         return result
     }
     
-    func decodeWeatherResponse(json: String) throws -> WeatherResponse {
+    static func decodeWeatherResponse(json: String) throws -> WeatherResponse {
         guard let responseData = json.data(using: .utf8),
               let result = try? decoder.decode(WeatherResponse.self, from: responseData) else {
             throw AppError.jsonDecodeError

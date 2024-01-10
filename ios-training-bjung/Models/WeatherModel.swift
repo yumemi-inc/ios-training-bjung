@@ -15,7 +15,6 @@ protocol WeatherModelInput {
 }
 
 final class WeatherModel: WeatherModelInput {
-
     private var yumemiWeather: YumemiWeather.Type
     
     init(yumemiWeather: YumemiWeather.Type) {
@@ -31,14 +30,13 @@ final class WeatherModel: WeatherModelInput {
     }
     
     func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
-        let mapper = Mapper.shared
-        let jsonString = try mapper.encodeWeatherRequest(request: request)
+        let jsonString = try Mapper.encodeWeatherRequest(request: request)
         let response = try yumemiWeather.fetchWeather(jsonString)
-        return try mapper.decodeWeatherResponse(json: response)
+        return try Mapper.decodeWeatherResponse(json: response)
     }
 }
 
-struct WeatherRequest: Codable {
+struct WeatherRequest: Encodable {
     let area: String
     let date: Date
 }
