@@ -28,8 +28,8 @@ class WeatherModelMock: WeatherModelInput {
         )
     }
     
-    func setExpectedWeather(weather: String) {
-        self.resultWeather = weather
+    func setExpectedWeather(weather: WeatherCondition) {
+        self.resultWeather = weather.rawValue
     }
 }
 
@@ -60,9 +60,9 @@ final class ios_training_bjungTests: XCTestCase {
     func testHomeViewLoadWeatherData() async throws {
         // Setup
         let testCases = [
-            (weather: "sunny", expect: UIImage(imageLiteralResourceName: "ic_sunny").withTintColor(.red)),
-            (weather: "cloudy", expect: UIImage(imageLiteralResourceName: "ic_cloudy").withTintColor(.gray)),
-            (weather: "rainy", expect: UIImage(imageLiteralResourceName: "ic_rainy").withTintColor(.systemBlue))
+            (weather: WeatherCondition.sunny, expect: UIImage(imageLiteralResourceName: "ic_sunny").withTintColor(.red)),
+            (weather: WeatherCondition.cloudy, expect: UIImage(imageLiteralResourceName: "ic_cloudy").withTintColor(.gray)),
+            (weather: WeatherCondition.rainy, expect: UIImage(imageLiteralResourceName: "ic_rainy").withTintColor(.systemBlue))
         ]
         
         // Exercise
