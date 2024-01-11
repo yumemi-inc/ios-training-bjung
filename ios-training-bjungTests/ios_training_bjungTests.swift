@@ -50,6 +50,7 @@ final class ios_training_bjungTests: XCTestCase {
             HomeViewController(coder: coder, presenter: self.homePresenter)
         })
         self.homePresenter.inject(view: self.homeViewController)
+        homeViewController.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
@@ -59,7 +60,6 @@ final class ios_training_bjungTests: XCTestCase {
     @MainActor
     func testHomeViewLoadWeatherData() async throws {
         // Setup
-        homeViewController.loadViewIfNeeded()
         let testCases = [
             (weather: "sunny", expect: UIImage(imageLiteralResourceName: "ic_sunny").withTintColor(.red)),
             (weather: "cloudy", expect: UIImage(imageLiteralResourceName: "ic_cloudy").withTintColor(.gray)),
