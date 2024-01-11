@@ -49,10 +49,4 @@ struct WeatherResponse: Decodable {
 }
 
 extension WeatherResponse: Equatable {
-    static func ==(lhs: WeatherResponse, rhs: WeatherResponse) -> Bool {
-        return lhs.minTemperature == rhs.minTemperature &&
-        lhs.maxTemperature == rhs.maxTemperature &&
-        lhs.weatherCondition == rhs.weatherCondition &&
-        lhs.date == rhs.date
-    }
 }
