@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import YumemiWeather
 @testable import ios_training_bjung
 
 class WeatherModelMock: WeatherModelInput {
@@ -20,7 +19,7 @@ class WeatherModelMock: WeatherModelInput {
         return resultWeather
     }
     
-    func fetchWeatherData(request: ios_training_bjung.WeatherRequest) async throws -> ios_training_bjung.WeatherResponse {
+    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
         return WeatherResponse(
             minTemperature: 10,
             maxTemperature: 20,
