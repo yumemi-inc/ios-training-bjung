@@ -40,13 +40,11 @@ final class HomeViewController: UIViewController {
     }
     
     @objc func intoForeground() {
-        Task {
-            await loadWeatherData()
-        }
+        loadWeatherData()
     }
     
-    func loadWeatherData() async {
-        await presenter.loadWeatherData()
+    func loadWeatherData() {
+        presenter.loadWeatherData()
     }
 
     @IBAction func onCloseButtonClick(_ sender: Any) {
@@ -54,9 +52,7 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
-        Task {
-            await loadWeatherData()
-        }
+        loadWeatherData()
     }
     
     private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {
