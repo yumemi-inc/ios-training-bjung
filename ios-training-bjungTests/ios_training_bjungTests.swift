@@ -8,7 +8,7 @@
 import XCTest
 @testable import ios_training_bjung
 
-class WeatherModelMock: WeatherModelInput {
+final class WeatherModelMock: WeatherModelInput {
     private var resultWeather: String = "default"
     
     func fetchWeatherData() async throws -> String {
@@ -33,10 +33,42 @@ class WeatherModelMock: WeatherModelInput {
     }
 }
 
+final class HomePresenterMock: HomePresenterInput {
+    private var resultWeather: String = "default"
+    
+    private weak var view: HomePresenterOutput?
+    private var model: WeatherModelInput
+    
+    init(model: WeatherModelInput) {
+        self.model = model
+    }
+    
+    func inject(view: HomePresenterOutput) {
+        self.view = view
+    }
+    
+    func loadWeatherData() {
+        let response = WeatherResponse(
+            minTemperature: 10,
+            maxTemperature: 20,
+            weatherCondition: resultWeather,
+            date: Date()
+        )
+        
+        view?.updateInfoDisplay(updatedInfo: response)
+    }
+    
+    func setExpectedWeather(weather: WeatherCondition) {
+        self.resultWeather = weather.rawValue
+    }
+}
+
+
+
 final class ios_training_bjungTests: XCTestCase {
     
     var homeViewController: HomeViewController!
-    var homePresenter: HomePresenter!
+    var mockPresenter: HomePresenterMock!
     var mockModel: WeatherModelMock!
 
     @MainActor
@@ -44,11 +76,11 @@ final class ios_training_bjungTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         self.mockModel = WeatherModelMock()
-        self.homePresenter = HomePresenter(model: mockModel)
+        self.mockPresenter = HomePresenterMock(model: mockModel)
         self.homeViewController = storyboard.instantiateViewController(identifier: "HomeView", creator: { coder in
-            HomeViewController(coder: coder, presenter: self.homePresenter)
+            HomeViewController(coder: coder, presenter: self.mockPresenter)
         })
-        self.homePresenter.inject(view: self.homeViewController)
+        self.mockPresenter.inject(view: self.homeViewController)
         homeViewController.loadViewIfNeeded()
     }
 
@@ -67,8 +99,8 @@ final class ios_training_bjungTests: XCTestCase {
         
         // Exercise
         for testCase in testCases {
-            self.mockModel.setExpectedWeather(weather: testCase.weather)
-            await homeViewController.loadWeatherData()
+            self.mockPresenter.setExpectedWeather(weather: testCase.weather)
+            homeViewController.loadWeatherData()
             
             // Verify
             XCTAssertEqual(homeViewController.imageView.image, testCase.expect)
