@@ -15,7 +15,9 @@ protocol HomePresenterInput {
 }
 
 protocol HomePresenterOutput: AnyObject {
+    @MainActor
     func updateInfoDisplay(updatedInfo response: WeatherResponse)
+    @MainActor
     func showAlertControllerByError(title: String, message: String)
 }
 
@@ -31,7 +33,6 @@ final class HomePresenter: HomePresenterInput {
         self.view = view
     }
     
-    @MainActor
     func loadWeatherData() {
         // 非同期処理が行われることはないが、
         // API 通信が課題なのであえて async await を使って表現

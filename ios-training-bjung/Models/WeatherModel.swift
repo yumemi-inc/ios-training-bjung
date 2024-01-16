@@ -47,3 +47,6 @@ struct WeatherResponse: Decodable {
     let weatherCondition: String
     let date: Date
 }
+
+extension WeatherResponse: Equatable {
+}

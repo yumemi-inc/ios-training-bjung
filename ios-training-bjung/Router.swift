@@ -8,6 +8,7 @@
 import UIKit
 import YumemiWeather
 
+@MainActor
 final class Router {
     static let shared = Router()
     private init() {}

@@ -9,6 +9,8 @@ import UIKit
 import YumemiWeather
 import os
 
+private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "homeView")
+
 final class HomeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -16,8 +18,6 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
     private var presenter: HomePresenterInput
-    
-    private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "homeView")
     
     init?(coder: NSCoder, presenter: HomePresenterInput) {
         self.presenter = presenter
@@ -36,10 +36,14 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(loadWeatherData), name: .onAppForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(intoForeground), name: .onAppForeground, object: nil)
     }
     
-    @objc func loadWeatherData() {
+    @objc func intoForeground() {
+        loadWeatherData()
+    }
+    
+    func loadWeatherData() {
         presenter.loadWeatherData()
     }
 

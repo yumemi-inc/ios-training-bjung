@@ -10,6 +10,7 @@
 		103603662B29A10D00D0AAD4 /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103603652B29A10D00D0AAD4 /* AppNotificationCenter.swift */; };
 		1036CC2B2B27FC7B00BD78B6 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */; };
 		1036CC2D2B28015400BD78B6 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036CC2C2B28015400BD78B6 /* AppError.swift */; };
+		10A611882B5515F600CFE22F /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A611872B5515F600CFE22F /* HomePresenterTests.swift */; };
 		10B89C512B16C3DB001C0E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C502B16C3DB001C0E96 /* AppDelegate.swift */; };
 		10B89C532B16C3DB001C0E96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */; };
 		10B89C552B16C3DB001C0E96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C542B16C3DB001C0E96 /* HomeViewController.swift */; };
@@ -49,6 +50,7 @@
 		103603652B29A10D00D0AAD4 /* AppNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
 		1036CC2A2B27FC7B00BD78B6 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		1036CC2C2B28015400BD78B6 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		10A611872B5515F600CFE22F /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		10B89C4D2B16C3DB001C0E96 /* ios-training-bjung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-training-bjung.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B89C502B16C3DB001C0E96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10B89C522B16C3DB001C0E96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				10B89C672B16C3DC001C0E96 /* ios_training_bjungTests.swift */,
+				10A611872B5515F600CFE22F /* HomePresenterTests.swift */,
 			);
 			path = "ios-training-bjungTests";
 			sourceTree = "<group>";
@@ -263,7 +266,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					10B89C4C2B16C3DB001C0E96 = {
 						CreatedOnToolsVersion = 14.2;
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10B89C682B16C3DC001C0E96 /* ios_training_bjungTests.swift in Sources */,
+				10A611882B5515F600CFE22F /* HomePresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +462,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -512,6 +517,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
