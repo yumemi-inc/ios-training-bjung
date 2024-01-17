@@ -46,8 +46,6 @@ final class HomeViewController: UIViewController {
     }
     
     func loadWeatherData() {
-        indicator.startAnimating()
-        reloadButton.isEnabled = false
         presenter.loadWeatherData()
     }
 
@@ -56,7 +54,6 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction func onReloadButtonClick(_ sender: UIButton) {
-        indicator.startAnimating()
         loadWeatherData()
     }
     
@@ -83,6 +80,11 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomePresenterOutput {
+    
+    func showLoadingUI() {
+        indicator.startAnimating()
+        reloadButton.isEnabled = false
+    }
     
     func updateInfoDisplay(updatedInfo response: WeatherResponse) {
         let resource = getDisplayResource(response: response.weatherCondition)
