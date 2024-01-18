@@ -1,0 +1,23 @@
+name: iOS starter workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main, session/*" ]
+
+jobs:
+  build:
+    name: testWorkflow
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 'latest'
+
+      - name: UnitTest
+        run: xcodebuild test -project ios-training-bjung.xcodeproj/ -scheme ios-training-bjung -resultBundlePath TestResults -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15"
