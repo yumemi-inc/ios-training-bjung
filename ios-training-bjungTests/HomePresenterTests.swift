@@ -11,6 +11,10 @@ import XCTest
 final class HomeViewMock: HomePresenterOutput {
     var expectation: XCTestExpectation?
     
+    func showLoadingUI() {
+        
+    }
+    
     func updateInfoDisplay(updatedInfo response: ios_training_bjung.WeatherResponse) {
         expectation?.fulfill()
     }
@@ -18,6 +22,7 @@ final class HomeViewMock: HomePresenterOutput {
     func showAlertControllerByError(title: String, message: String) {
         
     }
+    
 }
 
 final class HomePresenterTests: XCTestCase {
