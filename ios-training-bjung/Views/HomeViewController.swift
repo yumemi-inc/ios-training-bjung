@@ -48,8 +48,6 @@ final class HomeViewController: UIViewController {
 
     func loadWeatherData() {
         presenter.loadWeatherData { response in
-            let resource = self.getDisplayResource(response: response.weatherCondition)
-            
             self.updateDisplayScreen(response: response)
         }
     }
