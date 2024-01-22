@@ -20,4 +20,4 @@ jobs:
           xcode-version: 'latest'
 
       - name: UnitTest
-        run: xcodebuild test -project ios-training-bjung.xcodeproj/ -scheme ios-training-bjung -resultBundlePath TestResults -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15"
+        run: xcodebuild test -project ios-training-bjung.xcodeproj/ -scheme ios-training-bjung -resultBundlePath TestResults -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14"
