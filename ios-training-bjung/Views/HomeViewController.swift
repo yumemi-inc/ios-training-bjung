@@ -16,6 +16,8 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var reloadButton: UIButton!
     
     private var presenter: HomePresenterInput
     
@@ -79,15 +81,24 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: HomePresenterOutput {
     
+    func showLoadingUI() {
+        indicator.startAnimating()
+        reloadButton.isEnabled = false
+    }
+    
     func updateInfoDisplay(updatedInfo response: WeatherResponse) {
         let resource = getDisplayResource(response: response.weatherCondition)
         
         imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
         minTemperatureLabel.text = String(response.minTemperature)
         maxTemperatureLabel.text = String(response.maxTemperature)
+        indicator.stopAnimating()
+        reloadButton.isEnabled = true
     }
     
     func showAlertControllerByError(title: String, message: String) {
+        indicator.stopAnimating()
+        reloadButton.isEnabled = true
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default))

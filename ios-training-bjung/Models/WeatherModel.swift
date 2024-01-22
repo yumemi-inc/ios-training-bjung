@@ -31,7 +31,7 @@ final class WeatherModel: WeatherModelInput {
     
     func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
         let jsonString = try Mapper.encodeWeatherRequest(request: request)
-        let response = try yumemiWeather.fetchWeather(jsonString)
+        let response = try yumemiWeather.syncFetchWeather(jsonString)
         return try Mapper.decodeWeatherResponse(json: response)
     }
 }

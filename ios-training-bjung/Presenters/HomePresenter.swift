@@ -16,6 +16,8 @@ protocol HomePresenterInput {
 
 protocol HomePresenterOutput: AnyObject {
     @MainActor
+    func showLoadingUI()
+    @MainActor
     func updateInfoDisplay(updatedInfo response: WeatherResponse)
     @MainActor
     func showAlertControllerByError(title: String, message: String)
@@ -38,6 +40,7 @@ final class HomePresenter: HomePresenterInput {
         // API 通信が課題なのであえて async await を使って表現
         Task {
             do {
+                view?.showLoadingUI()
                 let request = WeatherRequest(area: "tokyo", date: Date())
                 let response = try await model.fetchWeatherData(request: request)
                 

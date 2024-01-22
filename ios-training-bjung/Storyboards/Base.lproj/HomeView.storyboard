@@ -55,6 +55,9 @@
                                     <constraint firstItem="9F7-rT-jtE" firstAttribute="top" secondItem="lr7-Ih-hWs" secondAttribute="bottom" id="wqD-8R-1rZ"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="indicator" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-Q6-2jT" userLabel="indicator">
+                                <rect key="frame" x="98.333333333333329" y="554.33333333333337" width="196.33333333333337" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="closeUiButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fz-YF-PQn" userLabel="closeUiButton">
                                 <rect key="frame" x="98.333333333333343" y="614.33333333333337" width="98.333333333333343" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
@@ -75,11 +78,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dTJ-Q6-2jT" firstAttribute="trailing" secondItem="1cS-6y-Tof" secondAttribute="trailing" id="3BD-2N-noE"/>
+                            <constraint firstItem="dTJ-Q6-2jT" firstAttribute="leading" secondItem="1cS-6y-Tof" secondAttribute="leading" id="3Tw-uT-5Y2"/>
                             <constraint firstItem="1cS-6y-Tof" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DjH-Ac-f0L"/>
                             <constraint firstItem="lr7-Ih-hWs" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="G1c-jM-cO3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7fz-YF-PQn" secondAttribute="trailing" symbolic="YES" id="Rzw-w6-Ous"/>
                             <constraint firstItem="7fz-YF-PQn" firstAttribute="top" secondItem="1cS-6y-Tof" secondAttribute="bottom" constant="80" id="Tyo-U4-nUF"/>
                             <constraint firstItem="3Bp-Ng-ySF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="VGp-G0-OEi"/>
+                            <constraint firstItem="dTJ-Q6-2jT" firstAttribute="top" secondItem="1cS-6y-Tof" secondAttribute="bottom" constant="20" id="Y55-GW-8Dd"/>
                             <constraint firstItem="7fz-YF-PQn" firstAttribute="width" secondItem="1cS-6y-Tof" secondAttribute="width" multiplier="0.5" id="fWh-os-BMw"/>
                             <constraint firstItem="7fz-YF-PQn" firstAttribute="leading" secondItem="1cS-6y-Tof" secondAttribute="leading" id="kNe-rO-oz9"/>
                             <constraint firstItem="3Bp-Ng-ySF" firstAttribute="top" secondItem="1cS-6y-Tof" secondAttribute="bottom" constant="80" id="khn-Pz-yPx"/>
@@ -90,8 +96,10 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="lr7-Ih-hWs" id="kGL-na-JKk"/>
+                        <outlet property="indicator" destination="dTJ-Q6-2jT" id="w5S-OZ-OpR"/>
                         <outlet property="maxTemperatureLabel" destination="7pz-yq-mFq" id="q3Y-HJ-8CD"/>
                         <outlet property="minTemperatureLabel" destination="Ve6-h5-bvJ" id="Rb6-OX-jgK"/>
+                        <outlet property="reloadButton" destination="3Bp-Ng-ySF" id="IY2-yT-05U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
