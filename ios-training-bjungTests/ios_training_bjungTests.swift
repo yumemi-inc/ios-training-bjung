@@ -47,7 +47,7 @@ final class HomePresenterMock: HomePresenterInput {
         self.view = view
     }
     
-    func loadWeatherData() {
+    func loadWeatherData(completion: @escaping (WeatherResponse) -> ()) {
         let response = WeatherResponse(
             minTemperature: 10,
             maxTemperature: 20,
@@ -55,7 +55,7 @@ final class HomePresenterMock: HomePresenterInput {
             date: Date()
         )
         
-        view?.updateInfoDisplay(updatedInfo: response)
+        completion(response)
     }
     
     func setExpectedWeather(weather: WeatherCondition) {

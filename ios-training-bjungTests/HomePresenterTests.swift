@@ -15,10 +15,6 @@ final class HomeViewMock: HomePresenterOutput {
         
     }
     
-    func updateInfoDisplay(updatedInfo response: ios_training_bjung.WeatherResponse) {
-        expectation?.fulfill()
-    }
-    
     func showAlertControllerByError(title: String, message: String) {
         
     }
@@ -50,7 +46,9 @@ final class HomePresenterTests: XCTestCase {
         mockView.expectation = expectation
         
         // Exercise
-        homePresenter.loadWeatherData()
+        homePresenter.loadWeatherData() { response in
+            expectation.fulfill()
+        }
         
         // Verify
         wait(for: [expectation], timeout: 10.0)
