@@ -18,7 +18,6 @@
 		10B89C5A2B16C3DC001C0E96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C592B16C3DC001C0E96 /* Assets.xcassets */; };
 		10B89C5D2B16C3DC001C0E96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B89C5B2B16C3DC001C0E96 /* LaunchScreen.storyboard */; };
 		10B89C682B16C3DC001C0E96 /* ios_training_bjungTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C672B16C3DC001C0E96 /* ios_training_bjungTests.swift */; };
-		10B89C722B16C3DC001C0E96 /* ios_training_bjungUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C712B16C3DC001C0E96 /* ios_training_bjungUITests.swift */; };
 		10B89C742B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B89C732B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift */; };
 		10B89C822B16C807001C0E96 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 10B89C812B16C807001C0E96 /* YumemiWeather */; };
 		10D758C32B1EC5D1002E4EB6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D758C22B1EC5D1002E4EB6 /* Router.swift */; };
@@ -62,7 +61,6 @@
 		10B89C632B16C3DC001C0E96 /* ios-training-bjungTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-training-bjungTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B89C672B16C3DC001C0E96 /* ios_training_bjungTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungTests.swift; sourceTree = "<group>"; };
 		10B89C6D2B16C3DC001C0E96 /* ios-training-bjungUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-training-bjungUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		10B89C712B16C3DC001C0E96 /* ios_training_bjungUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungUITests.swift; sourceTree = "<group>"; };
 		10B89C732B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_training_bjungUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		10D758C22B1EC5D1002E4EB6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		10D758C42B1EDA55002E4EB6 /* FirstView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 		10B89C702B16C3DC001C0E96 /* ios-training-bjungUITests */ = {
 			isa = PBXGroup;
 			children = (
-				10B89C712B16C3DC001C0E96 /* ios_training_bjungUITests.swift */,
 				10B89C732B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift */,
 			);
 			path = "ios-training-bjungUITests";
@@ -364,7 +361,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10B89C722B16C3DC001C0E96 /* ios_training_bjungUITests.swift in Sources */,
 				10B89C742B16C3DC001C0E96 /* ios_training_bjungUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
