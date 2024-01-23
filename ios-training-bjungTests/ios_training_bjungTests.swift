@@ -113,7 +113,8 @@ final class ios_training_bjungTests: XCTestCase {
     
     func testMapperJsonEncoder() throws {
         // Setup
-        let calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Asia/Tokyo")!
         let date = calendar.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0))!
         let target = WeatherRequest(area: "Tokyo", date: date)
         
@@ -128,7 +129,8 @@ final class ios_training_bjungTests: XCTestCase {
     
     func testMapperJsonDecoder() throws {
         // Setup
-        let calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Asia/Tokyo")!
         let date = calendar.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0))!
         let target = "{\"max_temperature\":25,\"date\":\"2020-04-01T12:00:00+09:00\",\"min_temperature\":7,\"weather_condition\":\"cloudy\"}"
         
