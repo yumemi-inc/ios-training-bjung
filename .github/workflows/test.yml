@@ -17,3 +17,8 @@ jobs:
 
       - name: UnitTest
         run: xcodebuild test -project ios-training-bjung.xcodeproj/ -scheme ios-training-bjung -resultBundlePath TestResults -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14"
+
+      - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+        if: success() || failure()
