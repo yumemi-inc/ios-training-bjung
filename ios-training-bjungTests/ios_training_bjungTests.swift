@@ -9,6 +9,7 @@ import XCTest
 @testable import ios_training_bjung
 
 final class WeatherModelMock: WeatherModelInput {
+    
     private var resultWeather: String = "default"
     
     func fetchWeatherData() async throws -> String {
@@ -19,13 +20,14 @@ final class WeatherModelMock: WeatherModelInput {
         return resultWeather
     }
     
-    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
-        return WeatherResponse(
+    func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable @MainActor (WeatherResponse) -> ()) async throws {
+        let response = WeatherResponse(
             minTemperature: 10,
             maxTemperature: 20,
             weatherCondition: resultWeather,
             date: Date()
         )
+        await completion(response)
     }
     
     func setExpectedWeather(weather: WeatherCondition) {
@@ -34,6 +36,7 @@ final class WeatherModelMock: WeatherModelInput {
 }
 
 final class HomePresenterMock: HomePresenterInput {
+    
     private var resultWeather: String = "default"
     
     private weak var view: HomePresenterOutput?
@@ -47,7 +50,7 @@ final class HomePresenterMock: HomePresenterInput {
         self.view = view
     }
     
-    func loadWeatherData(completion: @escaping (WeatherResponse) -> ()) {
+    func loadWeatherData() {
         let response = WeatherResponse(
             minTemperature: 10,
             maxTemperature: 20,
@@ -55,7 +58,7 @@ final class HomePresenterMock: HomePresenterInput {
             date: Date()
         )
         
-        completion(response)
+        view?.updateDisplayScreen(updatedInfo: response)
     }
     
     func setExpectedWeather(weather: WeatherCondition) {
