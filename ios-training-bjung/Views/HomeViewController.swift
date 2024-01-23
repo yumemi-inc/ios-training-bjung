@@ -47,9 +47,7 @@ final class HomeViewController: UIViewController {
     
 
     func loadWeatherData() {
-        presenter.loadWeatherData { response in
-            self.updateDisplayScreen(response: response)
-        }
+        presenter.loadWeatherData()
     }
 
     @IBAction func onCloseButtonClick(_ sender: Any) {
@@ -80,16 +78,7 @@ final class HomeViewController: UIViewController {
         
         return (imageResId, color)
     }
-    
-    private func updateDisplayScreen(response: WeatherResponse) {
-        let resource = getDisplayResource(response: response.weatherCondition)
-        
-        imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
-        minTemperatureLabel.text = String(response.minTemperature)
-        maxTemperatureLabel.text = String(response.maxTemperature)
-        indicator.stopAnimating()
-        reloadButton.isEnabled = true
-    }
+
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -98,6 +87,18 @@ extension HomeViewController: HomePresenterOutput {
         indicator.startAnimating()
         reloadButton.isEnabled = false
     }
+    
+    func updateDisplayScreen(updatedInfo response: WeatherResponse) {
+        let resource = getDisplayResource(response: response.weatherCondition)
+        
+        imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
+        minTemperatureLabel.text = String(response.minTemperature)
+        maxTemperatureLabel.text = String(response.maxTemperature)
+        indicator.stopAnimating()
+        reloadButton.isEnabled = true
+    }
+    
+
     
     func showAlertControllerByError(title: String, message: String) {
         indicator.stopAnimating()

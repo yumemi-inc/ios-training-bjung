@@ -11,7 +11,7 @@ import YumemiWeather
 protocol WeatherModelInput {
     func fetchWeatherData() async throws -> String
     func fetchWeatherData(at location: String) async throws -> String
-    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse
+    func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable @MainActor (WeatherResponse) -> ()) async throws
 }
 
 final class WeatherModel: WeatherModelInput {
@@ -29,10 +29,10 @@ final class WeatherModel: WeatherModelInput {
         return try yumemiWeather.fetchWeatherCondition(at: location)
     }
     
-    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
+    func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable @MainActor (WeatherResponse) -> ()) async throws {
         let jsonString = try Mapper.encodeWeatherRequest(request: request)
         let response = try yumemiWeather.syncFetchWeather(jsonString)
-        return try Mapper.decodeWeatherResponse(json: response)
+        await completion(try Mapper.decodeWeatherResponse(json: response))
     }
 }
 
