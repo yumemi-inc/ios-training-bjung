@@ -51,7 +51,7 @@ struct WeatherRequest: Encodable {
     let date: Date
 }
 
-struct WeatherResponse: Decodable, Sendable {
+struct WeatherResponse: Decodable {
     let minTemperature: Int
     let maxTemperature: Int
     let weatherCondition: String

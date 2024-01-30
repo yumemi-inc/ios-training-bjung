@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AppError: LocalizedError, Sendable {
+public enum AppError: LocalizedError {
     case jsonEncodeError
     case jsonDecodeError
     case unknownError
