@@ -20,14 +20,23 @@ final class WeatherModelMock: WeatherModelInput {
         return resultWeather
     }
     
-    func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable @MainActor (WeatherResponse) -> ()) async throws {
+    func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse {
+        return WeatherResponse(
+            minTemperature: 10,
+            maxTemperature: 20,
+            weatherCondition: resultWeather,
+            date: Date()
+        )
+    }
+    
+    func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable (Result<WeatherResponse, Error>) -> ()) {
         let response = WeatherResponse(
             minTemperature: 10,
             maxTemperature: 20,
             weatherCondition: resultWeather,
             date: Date()
         )
-        await completion(response)
+        completion(.success(response))
     }
     
     func setExpectedWeather(weather: WeatherCondition) {
