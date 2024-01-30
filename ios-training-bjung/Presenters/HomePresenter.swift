@@ -14,12 +14,10 @@ protocol HomePresenterInput {
     func loadWeatherData()
 }
 
+@MainActor
 protocol HomePresenterOutput: AnyObject {
-    @MainActor
     func showLoadingUI()
-    @MainActor
     func updateDisplayScreen(updatedInfo response: WeatherResponse)
-    @MainActor
     func showAlertControllerByError(title: String, message: String)
 }
 
