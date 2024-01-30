@@ -114,6 +114,7 @@ final class ios_training_bjungTests: XCTestCase {
     func testMapperJsonEncoder() throws {
         // Setup
         var calendar = Calendar(identifier: .gregorian)
+        // GitHub Actions でタイムゾーンを指定する必要がある
         calendar.timeZone = TimeZone(identifier: "Asia/Tokyo")!
         let date = calendar.date(from: DateComponents(year: 2020, month: 4, day: 1, hour: 12, minute: 0, second: 0))!
         let target = WeatherRequest(area: "Tokyo", date: date)
