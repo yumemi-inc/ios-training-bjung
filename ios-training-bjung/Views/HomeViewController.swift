@@ -45,6 +45,7 @@ final class HomeViewController: UIViewController {
         loadWeatherData()
     }
     
+
     func loadWeatherData() {
         presenter.loadWeatherData()
     }
@@ -77,6 +78,7 @@ final class HomeViewController: UIViewController {
         
         return (imageResId, color)
     }
+
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -86,7 +88,7 @@ extension HomeViewController: HomePresenterOutput {
         reloadButton.isEnabled = false
     }
     
-    func updateInfoDisplay(updatedInfo response: WeatherResponse) {
+    func updateDisplayScreen(updatedInfo response: WeatherResponse) {
         let resource = getDisplayResource(response: response.weatherCondition)
         
         imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
@@ -95,6 +97,8 @@ extension HomeViewController: HomePresenterOutput {
         indicator.stopAnimating()
         reloadButton.isEnabled = true
     }
+    
+
     
     func showAlertControllerByError(title: String, message: String) {
         indicator.stopAnimating()

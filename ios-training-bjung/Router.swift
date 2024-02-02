@@ -27,7 +27,7 @@ final class Router {
     func showHomeView(from previousViewController: UIViewController) {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
-        let model = WeatherModel(yumemiWeather: YumemiWeather.self)
+        let model = WeatherModel()
         let presenter = HomePresenter(model: model)
         let nextViewController = storyboard.instantiateInitialViewController() { coder in
             HomeViewController(coder: coder, presenter: presenter)
