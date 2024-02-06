@@ -46,7 +46,7 @@ final class FirstViewController: UIViewController {
     }
     
     deinit {
-        Logger().debug("FirstViewController deinit")
+        logger.debug("FirstViewController deinit")
     }
 }
 
