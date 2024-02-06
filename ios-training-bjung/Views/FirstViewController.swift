@@ -33,24 +33,16 @@ final class FirstViewController: UIViewController {
         self.weatherListTableView.refreshControl = UIRefreshControl()
         self.weatherListTableView.refreshControl?.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
 
-        Task {
-            await loadWeatherListData()
-        }
+        loadWeatherListData()
     }
         
-    func loadWeatherListData() async {
+    func loadWeatherListData() {
         let locations = ["Tokyo", "Osaka", "Fukuoka", "Sendai", "Sapporo"]
-        await presenter.loadWeatherListData(at: locations) { response in
-            self.weatherInfoList = response
-            self.weatherListTableView.reloadData()
-            self.weatherListTableView.refreshControl?.endRefreshing()
-        }
+        presenter.loadWeatherListData(at: locations)
     }
     
     @objc func refreshWeatherData() {
-        Task {
-            await loadWeatherListData()
-        }
+        loadWeatherListData()
     }
     
     deinit {
@@ -60,9 +52,14 @@ final class FirstViewController: UIViewController {
 
 extension FirstViewController: FirstPresenterOutput {
     
-    @MainActor
     func showAlertControllerByError(title: String, message: String) {
         Router.shared.showAlertController(from: self, title: title, message: message)
+        weatherListTableView.refreshControl?.endRefreshing()
+    }
+    
+    func showDataList(response: [WeatherListResponse]) {
+        weatherInfoList = response
+        weatherListTableView.reloadData()
         weatherListTableView.refreshControl?.endRefreshing()
     }
 }
