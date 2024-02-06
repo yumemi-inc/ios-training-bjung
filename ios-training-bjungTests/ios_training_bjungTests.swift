@@ -39,6 +39,17 @@ final class WeatherModelMock: WeatherModelInput {
         completion(.success(response))
     }
     
+    func fetchWeatherListData(request: WeatherListRequest) async throws -> [WeatherListResponse] {
+        let weatherResponse = WeatherResponse(
+            minTemperature: 10,
+            maxTemperature: 20,
+            weatherCondition: resultWeather,
+            date: Date()
+        )
+        let weatherListResponse = WeatherListResponse(info: weatherResponse, area: "Tokyo")
+        return [weatherListResponse]
+    }
+    
     func setExpectedWeather(weather: WeatherCondition) {
         self.resultWeather = weather.rawValue
     }
@@ -89,8 +100,15 @@ final class ios_training_bjungTests: XCTestCase {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         self.mockModel = WeatherModelMock()
         self.mockPresenter = HomePresenterMock(model: mockModel)
+    
+        let mockWeatherInfo = WeatherResponse(
+            minTemperature: 0,
+            maxTemperature: 0,
+            weatherCondition: WeatherCondition.sunny.rawValue,
+            date: Date()
+        )
         self.homeViewController = storyboard.instantiateViewController(identifier: "HomeView", creator: { coder in
-            HomeViewController(coder: coder, presenter: self.mockPresenter)
+            HomeViewController(coder: coder, presenter: self.mockPresenter, weatherInfo: mockWeatherInfo)
         })
         self.mockPresenter.inject(view: self.homeViewController)
         homeViewController.loadViewIfNeeded()
