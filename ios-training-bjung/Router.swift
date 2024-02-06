@@ -16,7 +16,13 @@ final class Router {
     func showFirstView(windowScene: UIWindowScene) -> UIWindow {
         let window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "FirstView", bundle: nil)
-        let viewController = storyboard.instantiateInitialViewController()
+        
+        let model = WeatherModel()
+        let presenter = FirstPresenter(model: model)
+        let viewController = storyboard.instantiateInitialViewController() { coder in
+            FirstViewController.init(coder: coder, presenter: presenter)
+        }!
+        presenter.inject(view: viewController)
         
         window.rootViewController = viewController
         window.makeKeyAndVisible()
@@ -24,19 +30,27 @@ final class Router {
         return window
     }
     
-    func showHomeView(from previousViewController: UIViewController) {
+    func showHomeView(from previousViewController: UIViewController, weatherInfo: WeatherResponse) {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
         
         let model = WeatherModel()
         let presenter = HomePresenter(model: model)
         let nextViewController = storyboard.instantiateInitialViewController() { coder in
-            HomeViewController(coder: coder, presenter: presenter)
+            HomeViewController(coder: coder, presenter: presenter, weatherInfo: weatherInfo)
         }!
         nextViewController.modalPresentationStyle = .fullScreen
         
         presenter.inject(view: nextViewController)
         
         present(from: previousViewController, to: nextViewController)
+    }
+    
+    func showAlertController(from previousViewController: UIViewController, title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        previousViewController.present(alertController, animated: true)
     }
     
     func dissmiss(target: UIViewController) {

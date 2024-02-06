@@ -13,6 +13,7 @@ protocol WeatherModelInput {
     func fetchWeatherData(at location: String) async throws -> String
     func fetchWeatherData(request: WeatherRequest) async throws -> WeatherResponse
     func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable (Result<WeatherResponse, Error>) -> ())
+    func fetchWeatherListData(request: WeatherListRequest) async throws -> [WeatherListResponse]
 }
 
 
@@ -33,21 +34,32 @@ final class WeatherModel: WeatherModelInput {
     }
 
     func fetchWeatherData(request: WeatherRequest, completion: @escaping @Sendable (Result<WeatherResponse, Error>) -> ()) {
-            Task {
-                do {
-                    let jsonString = try Mapper.encodeWeatherRequest(request: request)
-                    let response = try YumemiWeather.syncFetchWeather(jsonString)
-                    let result = try Mapper.decodeWeatherResponse(json: response)
-                    completion(.success(result))
-                } catch {
-                    completion(.failure(error))
-                }
+        Task {
+            do {
+                let jsonString = try Mapper.encodeWeatherRequest(request: request)
+                let response = try YumemiWeather.syncFetchWeather(jsonString)
+                let result = try Mapper.decodeWeatherResponse(json: response)
+                completion(.success(result))
+            } catch {
+                completion(.failure(error))
             }
         }
+    }
+    
+    func fetchWeatherListData(request: WeatherListRequest) async throws -> [WeatherListResponse]  {
+        let jsonString = try Mapper.encodeWeatherListRequest(request: request)
+        let response = try YumemiWeather.syncFetchWeatherList(jsonString)
+        return try Mapper.decodeWeatherListResponse(json: response)
+    }
 }
 
 struct WeatherRequest: Encodable {
     let area: String
+    let date: Date
+}
+
+struct WeatherListRequest: Codable {
+    let areas: [String]
     let date: Date
 }
 
@@ -59,4 +71,9 @@ struct WeatherResponse: Decodable {
 }
 
 extension WeatherResponse: Equatable {
+}
+
+struct WeatherListResponse: Decodable {
+    let info: WeatherResponse
+    let area: String
 }

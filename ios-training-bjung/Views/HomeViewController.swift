@@ -20,15 +20,17 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     
     private var presenter: HomePresenterInput
+    private let weatherInfo: WeatherResponse
     
-    init?(coder: NSCoder, presenter: HomePresenterInput) {
+    init?(coder: NSCoder, presenter: HomePresenterInput, weatherInfo: WeatherResponse) {
         self.presenter = presenter
+        self.weatherInfo = weatherInfo
         super.init(coder: coder)
     }
     
     // 独自 init を作ったので必要になる
     required init?(coder: NSCoder) {
-            fatalError()
+        fatalError()
     }
     
     deinit {
@@ -39,12 +41,12 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(intoForeground), name: .onAppForeground, object: nil)
+        updateDisplayScreen(updatedInfo: weatherInfo)
     }
     
     @objc func intoForeground() {
         loadWeatherData()
     }
-    
 
     func loadWeatherData() {
         presenter.loadWeatherData()
@@ -58,27 +60,6 @@ final class HomeViewController: UIViewController {
         loadWeatherData()
     }
     
-    private func getDisplayResource(response: String) -> (imageResId: String, color: UIColor) {
-        let imageResId: String
-        let color: UIColor
-        
-        guard let weatherCondition = WeatherCondition(rawValue: response) else { fatalError("unknown result") }
-        
-        switch weatherCondition {
-        case .sunny:
-            imageResId = "ic_sunny"
-            color = .red
-        case .rainy:
-            imageResId = "ic_rainy"
-            color = .systemBlue
-        case .cloudy:
-            imageResId = "ic_cloudy"
-            color = .gray
-        }
-        
-        return (imageResId, color)
-    }
-
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -89,25 +70,17 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     func updateDisplayScreen(updatedInfo response: WeatherResponse) {
-        let resource = getDisplayResource(response: response.weatherCondition)
-        
-        imageView.image = UIImage(imageLiteralResourceName: resource.imageResId).withTintColor(resource.color)
+        imageView.image = ConvertToUIImage.getDisplayUIImage(weatherCondition: response.weatherCondition)
         minTemperatureLabel.text = String(response.minTemperature)
         maxTemperatureLabel.text = String(response.maxTemperature)
         indicator.stopAnimating()
         reloadButton.isEnabled = true
     }
     
-
-    
     func showAlertControllerByError(title: String, message: String) {
         indicator.stopAnimating()
         reloadButton.isEnabled = true
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        present(alertController, animated: true)
+        Router.shared.showAlertController(from: self, title: title, message: message)
     }
 }
 

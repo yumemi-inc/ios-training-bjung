@@ -47,4 +47,20 @@ enum Mapper {
         }
         return result
     }
+    
+    static func encodeWeatherListRequest(request: WeatherListRequest) throws -> String {
+        guard let jsonData = try? encoder.encode(request),
+              let result = String(data: jsonData, encoding: .utf8) else {
+            throw AppError.jsonEncodeError
+        }
+        return result
+    }
+    
+    static func decodeWeatherListResponse(json: String) throws -> [WeatherListResponse] {
+        guard let responseData = json.data(using: .utf8),
+              let result = try? decoder.decode([WeatherListResponse].self, from: responseData) else {
+            throw AppError.jsonDecodeError
+        }
+        return result
+    }
 }
