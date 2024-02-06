@@ -63,6 +63,7 @@ extension FirstViewController: FirstPresenterOutput {
     @MainActor
     func showAlertControllerByError(title: String, message: String) {
         Router.shared.showAlertController(from: self, title: title, message: message)
+        weatherListTableView.refreshControl?.endRefreshing()
     }
 }
 
